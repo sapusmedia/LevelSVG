@@ -1,0 +1,51 @@
+VIMOV, LLC
+Software License Agreement for iSimulate SDK 1.5
+
+PLEASE READ CAREFULLY: BY INSTALLING THE SOFTWARE (AS DEFINED BELOW) YOU (EITHER ON BEHALF OF YOURSELF AS AN INDIVIDUAL OR ON BEHALF OF AN ENTITY AS ITS AUTHORIZED REPRESENTATIVE) AGREE TO ALL OF THE TERMS OF THIS END USER LICENSE AGREEMENT REGARDING THE USE OF THE SOFTWARE. IF YOU DISAGREE WITH ANY OF THE TERMS OF THIS AGREEMENT, VIMOV, LLC DOES NOT GRANT YOU A LICENSE TO USE THE ISIMULATE SDK.
+
+1) DEFINITIONS:
+
+'Agreement' means this iSimulate SDK Agreement.
+
+'VIMOV, LLC' means VIMOV, a Limited Liability Company based in Egypt with its principal place of business at 40 Ahmed Kamal, Moustafa Kamel, Alexandria 21311, Egypt.
+
+'Application' means one or more software programs developed by You, under Your own trademark or brand, including bug fixes, updates, upgrades, modifications, enhancements, supplements to, revisions, new releases, and new versions of such software programs.
+
+'SDK' (Software Development Kit) means the Documentation, software, sample code, libraries, APIs, files and material provided or made available by VIMOV, LLC in parts of its iSimulate product for use by You in connection with Your Application development, and includes any Updates that may be provided or made availably by VIMOV, LLC.
+
+'Updates' means bug fixes, updates, upgrades, modifications, enhancements, supplements, and new releases of versions of the SDK, or to any part of the SDK.
+
+'You' or 'Your' means the person(s) or entity using the SDK or otherwise exercising rights under this Agreement. If You are entering into this Agreement on behalf of Your company, "You" or "Your" refers to your company as well.
+
+2) GRANT OF LICENSE:
+
+Subject to the Agreement below, VIMOV, LLC hereby grants You a non-exclusive, non-transferable license to install and to use the iSimulate SDK.
+
+The SDK may be installed on any number of computers simultaneously. You may copy the SDK for storage, back-up or archival purposes. Although you do not need to distribute the iSimulate SDK library file (libisimulate.a) as part of your application, you are granted to redistribute it royalty free as part of your applications, whether free or commercial.
+
+3) LICENSING RESTRICTIONS:
+
+1) iSimulate SDK may be licensed by any company, incorporated entity, or individual.
+
+2) TITLE: You acknowledge that no title to the intellectual property in the SDK is transferred to you. Title, ownership, rights, and intellectual property rights in and to the SDK shall remain that of VIMOV, LLC. The SDK is protected by copyright, patent laws of Egypt and international treaties. The parties acknowledge and agree that VIMOV, LLC shall not acquire any ownership interest in or to any of Your Applications.
+
+3) DISCLAIMER OF WARRANTY: YOU AGREE THAT VIMOV, LLC HAS MADE NO EXPRESS WARRANTIES, ORAL OR WRITTEN, TO YOU REGARDING THE PRODUCTS AND THAT THE PRODUCTS ARE BEING PROVIDED TO YOU 'AS IS' WITHOUT WARRANTY OF ANY KIND. VIMOV, LLC DISCLAIMS ANY AND ALL OTHER WARRANTIES, WHETHER EXPRESSED, IMPLIED, OR STATUTORY. YOUR RIGHTS MAY VARY DEPENDING ON THE STATE IN WHICH YOU LIVE. VIMOV, LLC SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, COVER, RELIANCE, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OF THIS PRODUCT.
+
+4) LIMITATION OF LIABILITY: YOU USE THIS PROGRAM SOLELY AT YOUR OWN RISK. IN NO EVENT SHALL VIMOV, LLC BE LIABLE TO YOU FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO ANY LOSS, OR OTHER INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND ARISING OUT OF THE USE OF THE SDK, EVEN IF VIMOV, LLC HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT WILL VIMOV, LLC BE LIABLE FOR ANY CLAIM, WHETHER IN CONTRACT, TORT, OR ANY OTHER THEORY OF LIABILITY, EXCEED THE COST OF THE SDK. THIS LIMITATION SHALL APPLY TO CLAIMS OF PERSONAL INJURY TO THE EXTENT PERMITTED BY LAW.
+
+5) TERMINATION: This Agreement shall terminate automatically if you fail to comply with the limitations described in this Agreement. No notice shall be required to effectuate such termination. Upon termination, you must remove and destroy all copies of the SDK.
+
+6) MISCELLANEOUS:
+
+Severability: In the event of invalidity of any provision of this Agreement, the parties agree that such invalidity shall not affect the validity of the remaining portions of this Agreement.
+
+Export: You agree that you will not export or re-export the SDK outside of the jurisdiction in which you obtained it without the appropriate Egyptian or foreign government licenses.
+
+Governing Law: This Agreement will be governed by the laws of Egypt as they are applied to agreements between Egypt residents entered into and to be performed entirely within Egypt. The United Nations Convention on Contracts for the International Sale of Goods is specifically disclaimed.
+
+Entire Agreement: You agree that this is the entire agreement between you and VIMOV, LLC, which supersedes any prior agreement, whether written or oral, and all other communications between VIMOV, LLC and you relating to the subject matter of this Agreement.
+
+Reservation of rights: All rights not expressly granted in this Agreement are reserved by VIMOV, LLC.
+
+Derivative work: Whether you are licensing the SDK as an individual or on behalf of an entity, you may not: (a) reverse engineer, decompile, or disassemble the SDK or attempt to discover the source code; (b) modify, or create derivative works based upon, the SDK in whole or in part without the express written consent of VIMOV, LLC; (c) distribute copies of the SDK; (d) remove any proprietary notices or labels on the SDK; (e) resell, lease, rent, transfer, sublicense, or otherwise transfer rights to the SDK.
+

@@ -1,0 +1,145 @@
+#Mekanimo_version: 1.6
+#author: 
+#<|V|>#
+#name: #Mekanimo_version: 1.6
+#date: #author: 
+#<|V|>#
+#name: #Mekanimo_version: 1.6
+#date: #author:
+#<|V|>#
+#name: #Mekanimo_version: 1.6
+#date: #author:
+#<|V|>#
+#name: Version_1
+#date: Fri Sep 17 16:29:21 2010
+system.initialize(gravity=[0.00, -9.81], zeroGravity=False, boxOrigin=(0, 0), 
+                    boxWidth=59.8125, boxHeight=42.0, boxActive=True)
+
+circle(x=0.35433480192, y=0.64961380352, radius=0.21177499033, 
+       name='circle1', alias='c1', fillColor=(155, 151, 184, 150))
+
+circle1.radius = 0.25
+
+circle(x=1.20259084288, y=0.85362475008, radius=0.24420250782, 
+       name='circle2', alias='c2', fillColor=(160, 232, 212, 150))
+
+circle2.radius = 0.25
+
+circle2.pos = [1.1864847155200002, 0.66035122176000027]
+
+rectangle(x=0.80262201344, y=1.26969970688, width=1.51934468096, height=0.33822867456, 
+          name='rectangle1', alias='r1', fillColor=(165, 146, 151, 150))
+
+rectangle(x=0.2550136832, y=1.10595407872, width=0.15569256448, height=0.28991029248, 
+          name='rectangle2', alias='r2', fillColor=(251, 206, 144, 150))
+
+rectangle(x=1.2482248704, y=1.1140071424, width=0.15569256448, height=0.33822867456, 
+          name='rectangle3', alias='r3', fillColor=(132, 127, 240, 150))
+
+beam(body1=rectangle2, body2=rectangle1, b1x=-0.00805306368, b1y=0.03221225472, 
+     b2x=-0.5502926848, b2y=0.13153337344, name='beam1', alias='b1')
+
+beam(body1=rectangle3, body2=rectangle1, b1x=0.0, b1y=2.22044604925e-16, 
+     b2x=0.4429185024, b2y=0.13690208256, name='beam2', alias='b2')
+
+rectangle1.rotCenter = [0.0, 0.0]
+
+system.noCollision([circle1, circle2, rectangle1, rectangle2, rectangle3])
+
+rectangle(x=0.35701915648, y=0.76235669504, width=0.12348030976, height=0.22548578304, 
+          name='rectangle4', alias='r4', fillColor=(101, 240, 239, 150))
+
+rectangle(x=1.19722213376, y=0.738197504, width=0.13958643712, height=0.23085449216, 
+          name='rectangle5', alias='r5', fillColor=(230, 213, 100, 150))
+
+rectangle5.name = "suspensionFront"
+
+rectangle4.name = "suspensionRear"
+
+moveGroup([circle2, suspensionFront], [[1.3958643712001566, 0.59055800320000029], [1.4066017894401577, 0.66840428544000052]], [0, 0])
+
+moveGroup([circle2, suspensionFront], [[1.2455405158401565, 0.83214991360000035], [1.2562779340801575, 0.90999619584000058]], [0, 0])
+
+moveGroup([circle1, suspensionRear], [[0.25232932864000007, 0.80530636800000022], [0.25501368320000001, 0.91804925952000005]], [0, 0])
+
+vRail(body1=suspensionFront, body2=rectangle3, b1x=-0.0161061273602, b1y=0.08858370048, 
+      name='vRail1', alias='vr1')
+
+vRail(body1=suspensionRear, body2=rectangle2, b1x=-0.00805306368, b1y=0.07516192768, 
+      name='vRail2', alias='vr2')
+
+vRail1.enableLimit = True
+
+vRail1.lowerLimit = -0.5
+
+vRail1.upperLimit = 0.5
+
+vRail2.enableLimit = True
+
+vRail2.lowerLimit = -0.5
+
+vRail2.upperLimit = 0.5
+
+system.box.active = False
+
+system.box.active = True
+
+hide(VRAIL)
+
+pin(body1=circle1, body2=ground, b1x=0.00268435456, b1y=0.0, 
+     name='pin1', alias='i1')
+
+motor(body1=circle2, body2=ground, b1x=0.01073741824, b1y=-0.03758096384, 
+      rpm=60, torqueLimit=10000, name='motor1', alias='m1')
+
+removeElement(pin1)
+
+removeElement(motor1)
+
+pin(body1=suspensionRear, body2=circle1, b1x=0.00805306368, b1y=-0.10200547328, 
+     name='pin1', alias='i1')
+
+motor(body1=suspensionFront, body2=circle2, b1x=0.0107374182398, b1y=-0.08321499136, 
+      rpm=60, torqueLimit=10000, name='motor1', alias='m1')
+
+vRail1.lowerLimit = -0.1
+
+vRail1.upperLimit = 0.1
+
+vRail2.lowerLimit = -0.1
+
+vRail2.upperLimit = 0.1
+
+motor1.rpm = -60.0
+
+moveGroup([circle1, circle2, rectangle1, rectangle2, rectangle3, beam1, beam2, suspensionRear, suspensionFront], [[1.6616154726400005, 0.65229815808000025], [2.6548266598401566, 0.67914170368000026], [2.2119081574400008, 1.1166914969600001], [1.6642998272000005, 0.95294586879999987], [2.6575110144000007, 0.9609989324799999], ((-0.0080530636800000555, 0.032212254720000333), (-0.55029268480000004, 0.13153337344000016)), ((0.0, 2.2204460492503131e-16), (0.44291850240000019, 0.13690208256000025)), [1.6642998272000005, 0.76504104959999997], [2.6655640780801582, 0.75698798592000061]], [0, 0, 0, 0, 0, None, None, 0, 0])
+
+motor1.rpm = -160.0
+
+circle1.name = "wheelLeft"
+
+circle2.name = "wheelRight"
+
+suspensionRear.name = "suspensionLeft"
+
+suspensionFront.name = "suspensionRight"
+
+rectangle1.name = "cartUpper"
+
+rectangle2.name = "cartLeft"
+
+rectangle3.name = "cartRight"
+
+show(VRAIL)
+
+motor1.name = "revoluteRight"
+
+pin1.name = "revoluteLeft"
+
+hide(VRAIL)
+
+system.box.active = False
+
+moveGroup([wheelLeft, wheelRight, cartUpper, cartLeft, cartRight, beam1, beam2, suspensionLeft, suspensionRight], [[-0.48586817536000004, -0.3011845816319999], [0.50734301184015607, -0.27434103603199989], [0.064424509440000222, 0.16320875724799999], [-0.48318382080000011, -0.0005368709120002757], [0.51002736640000013, 0.007516192767999752], ((-0.0080530636800000555, 0.032212254720000333), (-0.55029268480000004, 0.13153337344000016)), ((0.0, 2.2204460492503131e-16), (0.44291850240000019, 0.13690208256000025)), [-0.48318382080000011, -0.18844169011200018], [0.51808043008015758, -0.19649475379199954]], [0, 0, 0, 0, 0, None, None, 0, 0])
+
+cartUpper.pos = [0.0, 0.16320875724799999]

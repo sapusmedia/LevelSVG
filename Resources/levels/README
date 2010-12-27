@@ -1,0 +1,93 @@
+Steps used to create the levels:
+-------------------------------
+
+
+Level0:
+=======
+
+1. Create a tile map using Tiled ( http://mapeditor.org ). Tiled is supported by cocos2d
+2. Save the project as "level0.tmx". 
+3. Save the project as an image: "level0.png". This image is not used in the game
+    -> Tiled -> File -> Save As Image
+4. Open Inkscape and create a new document of 480x320. Actually it can be of any size, but 480x320 is useful as a reference.
+    -> Inkscape -> File -> Document Properties -> Custom size: width=480, height=320
+5. Create 2 layers:
+    -> physics:objects
+    -> tmx map
+6. Select the "tmx map" layer, and import the "level0.png" image.
+    -> Inkscape -> File -> Import -> Select "level0.png"
+7. Place the image at (0,0)
+    -> Select the image and modify x=0, y=0
+8. Select the "physics:object" layer and start placing your physics object!
+
+Since the tiles will be rendered using a CCTMXTiledMap object, you should use "invisible tiles" objects in the physics:object layer.
+
+Files used in the game:
+    - level0.tmx    (to render the tiles)
+    - level0.svg
+
+For further info, please see Level0.mm
+
+Level1:
+=======
+
+1. Open Inkscape and create a new document of 480x320. Actually it can be of any size, but it is useful as a reference.
+    -> Inkscape -> File -> Document Properties -> Custom size: width=480, height=320
+2. Create 1 layer:
+    -> physics:objects
+3. Design the world
+4. Once you finish it, duplicate that layer
+    -> Inkscape -> Layer -> Duplicate current Layer
+5. Rename the new layer to: "graphics"
+6. Select the "graphics" layer and "paint it".
+7. Disable the "physics:objects" layer
+    -> Inkscape -> Layer -> Layers -> click on the "eye" of "physics:objects" layer
+8. Export the image as bitmap
+    -> Inkscape -> File -> Page
+9. The new exported image (level1.png) will be used as the background image
+
+Files used in the game:
+    - level1.png    (the background image)
+    - level1.svg
+
+For further info, please see Level1.mm
+
+
+Level2:
+=======
+
+1. Open Inkscape and create a new document of 480x320. Actually it can be of any size, but it is useful as a reference.
+    -> Inkscape -> File -> Document Properties -> Custom size: width=480, height=320
+2. Create 1 layer:
+    -> physics:objects
+3. Start designing the world.
+
+Level2 is a self-render map. The platforms know how to render so there is no need to use a background image or a TMX tile map.
+
+Files used in the game:
+    - level2.svg
+
+For further info, please see Level2.mm
+
+
+Level3:
+=======
+
+1. Open Inkscape and create a new document of 480x320. Actually it can be of any size, but it is useful as a reference.
+    -> Inkscape -> File -> Document Properties -> Custom size: width=480, height=320
+2. Create 1 layer:
+    -> physics:objects
+3. Start designing the world.
+4. The bezier "platforms" are rendered using the Box2dDebug method. Only use this alternative for debuggin purposes.
+
+Files used in the game:
+    - level3.svg
+
+Level4:
+=======
+
+Uses the same technique as Level0
+
+Files used in the game:
+    - level4.tmx        (the tiles)
+    - level4.svg

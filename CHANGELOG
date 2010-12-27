@@ -1,0 +1,186 @@
+2010-12-13 (v2.9)
+ - [NEW] Hero: Added new hero: HeroCarTopDown: A top down car
+ - [NEW] HUD: When the game is over, displays a menu with Play Again / Main menu
+ - [NEW] Joystick: Implements the Joystick protocol
+ - [NEW] JoystickCar: New object that has 3 buttons: accelerate, turn left, turn right
+ - [NEW] Level: Added new Level7. It contains a track a HeroCarTopDown
+ - [NEW] SVGParser: supports http:// url for the svg file. Useful for debugging purposes.
+ - [FIX] BodyNode: CCFollow action uses the kGameNodeFollowActionTag tag
+ - [FIX] BodyNode: Hero doesn't jump if it is touching a sensor
+ - [FIX] Levels: Level4 and Level6 uses 4way joystick. Hero can climb ladders using accelerometer
+ - [3RD] cocos2d: updated to cocos2d v0.99.5-rc1 + updates
+ 
+2010-10-29 (v2.8)
+ - [NEW] BodyNode: Ladder. Added new body node
+ - [NEW] BodyNode: Hero. Knows how to use the ladder
+ - [NEW] BodyNode: Hero: Added onGameOver callback. When the game is over, the Hero stops moving
+ - [NEW] Levels: Level3 includes a background image
+ - [NEW] Levels: Level4 and Level6 contains some Ladder objects
+ - [NEW] Levels: Level5 has a teleport object
+ - [NEW] Levels: Supports invisible objects
+ - [FIX] BodyNode: All BodyNodes use the "_" suffix for the ivars
+ - [FIX] BodyNode: Portal objects can teleport compound objects like HeroCar
+ - [FIX] Bullet: bullet is not affected by gravity
+ - [FIX] Bullet: is removed by GameNode#removeB2Body
+ - [FIX] Xcode: added icons for RetinaDisplay, iPad and spotlight
+ - [3RD] cocos2d: using cocos2d v0.99.5-rc0 + updates
+
+2010-09-17 (v2.7)
+ - [NEW] All: Using new cocos2d API for transitions and actions
+ - [NEW] BodyNode: New Enemycar BodyNode coded using Mekanimo
+ - [NEW] GameNode: Uses CCFollow instead of using a custom camera. It is still possible to move the "camera" manually.
+ - [NEW] Level: Added new level: Level6 that introduces the "EnemyCar" BodyNode
+ - [FIX] MovingPlatform: Is moved using SetLinearVelocity()
+ - [FIX] KinematicNode renamed to StaticNode. It is an "static" body, not "Kinematic" body
+ - [3RD] cocos2d: using cocos2d v0.99.5-beta2 + updates
+
+2010-08-11 (v2.6)
+ - [NEW] All: Updated code to use CCSpriteBatchDraw and CCTranstion*
+ - [NEW] BonusNode: added support for respawn by using the "respawnTime" parameter
+ - [NEW] BonusNode: Added Chain bonus node.
+ - [NEW] GameNode: is reponsible for removing b2Bodies. Removed this logic
+			from Hero.mm and Enemy.mm
+ - [NEW] Levels: Level5 and Playground0 have a Chain body node
+ - [FIX] BodyNode: added "properties_". should the sprite be updated by the physics engine ?
+ - [FIX] Box2dDebugDrawNode: GLESDebugDraw object moved from GameNode to Box2dDebugDrawNode
+ - [3RD] cocos2d: using cocos2d v0.99.5-beta + fixes
+ 
+2010-07-11 (v2.5)
+ - [NEW] BodyNodes: HeroCar composed of multiple bodies and sprites
+ - [NEW] BodyNodes: WheelNode, a BodyNode used in HeroCar
+ - [NEW] BodyNodes: MovingPlatform supports these new parameters: duration & translation
+ - [NEW] BodyNodes: PrincessBox is animated
+ - [NEW] GameNode: addBodyNode supports zOrder parameter
+ - [NEW] Levels: Level5 is a new level that shows the HeroCar
+ - [FIX] Application Delegate: uses new way to initialize the EAGLView
+ - [FIX] Application Delegate: Added onForeground and onBackground callbacks
+ - [FIX] Application Delegate: Call Director#purgeCachedData on memory warning
+ - [FIX] Xcode: Target OS is 3.1
+ - [FIX] Xcode: Base SDK 4.0
+ - [3RD] cocos2d: using v0.99.4-rc3 + fixes
+ - [3RD] CocosDension: using version that comes with cocos2d v0.99.4-rc3
+ - [3RD] libisimulate: removed since it is not compatible with SDK 4.0
+
+2010-06-01 (v2.4)
+ - [NEW] BodyNodes: Can receive parameters from the SVG file
+ - [NEW] BodyNodes: Enemy supports "patrolTime" and "patrolSpeed" parameter
+ - [NEW] BodyNodes: MovingPlatform supports "direction" parameter
+ - [NEW] BodyNodes: Portal, new node. Teleports the hero. Supports "MoveToX" and "moveToY" parameter.
+ - [NEW] BodyNodes: Platform1 supports "visible" parameter
+ - [FIX] BodyNodes: Bullet is responsible for doing anti-gravity
+ - [FIX] BodyNodes: Removed Elevator (replaced by MovingPlatform with parameters)
+ - [FIX] BodyNodes: Removed Platform1Invisible (replaced by Platform1 with parameters)
+ - [FIX] BodyNodes: KinematicNode knows nothing about actions and sprites
+ - [FIX] GameNode: Removed responsibility for doing anti-gravity in Bullet
+ - [FIX] Xcode: 'distribution' verifies product
+ - [FIX] Xcode: thumb2 enabled in ARMv7 devices
+ - [3RD] cocos2d: uses cocos2d v0.99.3
+
+2010-05-05 (v2.3)
+ - [NEW] BodyNodes: Bullet, supports Auto-fire + frequency, life span,
+			anti-gravity when used as a dynamic body.
+ - [NEW] BodyNodes: Hero: Knows how to fire
+ - [NEW] BodyNodes: Enemy: If touched by bullet, it dies
+ - [NEW] GameNode: implements bullet anti-gravity.
+ - [NEW] Joystick: supports multiple buttons. Useful for the "fire" button
+ - [NEW] Levels: Level4 uses 2 buttons: Jump + Fire
+ - [NEW] Levels: Playground0 uses 2 buttons: Jump + Fire
+ - [FIX] Levels: improved documentation
+ - [FIX] Levels: Level0 uses 0 buttons (it wasn't used)
+ - [FIX] Xcode: compiles and run in SDK 4.0
+ - [3RD] Box2d: Uses Box2d v2.1.2
+ - [3RD] cocos2d: Uses cocos2d v0.99.2 + fixes
+
+2010-03-26 (v2.2)
+ - [NEW] BodyNodes: HeroBox: uses new images using Zwoptex. Replaced Pingus with Sapus animation
+ - [NEW] BodyNodes: HeroRound: improved jumps to prevent "super jump" while passing through a one-sided platform
+ - [NEW] BodyNodes: Princess, BadGuy: when touched by hero, the touchedByHero method is called
+ - [NEW] BodyNodes: BonusNode: new class that is the base class of Star, Fruit, and Life
+ - [NEW] BodyNodes: Life: when touched it increases lives in 1
+ - [NEW] BodyNodes: Star: when touched it increases points in 5
+ - [NEW] Scene: Added About Scene
+ - [NEW] Scene: Splited MenuScene in 2: MenuScene and SelectLevelScene
+ - [NEW] HUD: scores scales up/down when new score. Life blinks when new life
+ - [NEW] Levels: new Level4: A TMX based game with boxed sprites
+ - [FIX] BodyNodes: Hero: Uses Box2d new API: ApplyImpulse() -> ApplyLinearImpulse()
+ - [FIX] BodyNodes: KinematicNode: setAngle calls SetTransform() with the correct position
+ - [FIX] BodyNodes: Platform1Invisible is subclass of Platform1 (easier to maintain)
+ - [FIX] BodyNodes: Platform1 takes into account which node is the platform before disabling the contact
+ - [FIX] Hero: Platform1 logic is on the Hero
+ - [FIX] Hero: handles correctly jumps after passing through a one-sided platform
+ - [FIX] Levels: added more lives and bonus points in the levels.
+ - [3RD] Box2D: using r69
+ - [3RD] cocos2d & CocosDension: using v0.99.1 (SVN r1877)
+ - [3RD] libisimulate: using 2010-02-18 v1.5
+ 
+2010-02-16 (v2.1)
+ - Box2D: using r57
+ - cocos2d, cocoslive & CocosDension: using v0.99.0 (svn r1800)
+ - Hero: body is removed from box2d before the node is removed from cocos2d (bug fix)
+ - Hero: detects normal correctly when a contact occurs (bug fix)
+ - Hero: Added Heroround and Herobox subclasses. Hero is an abstract class
+ - HeroBox: Moves the hero using SetLinearVelocity(). Jumps higher if jump buttons is pressed longer
+ - HeroRound: behaves as the old Hero class
+ - Levels: Added 2 playground levels: playground0 and playground1
+ - Playground0: Platform Level that tries to emulate Mario Bros
+ - SVGParser: is an static library. Default values are passed as an argument
+ - SVGParser: supports 'fixedRotation' property
+ - XCode: removed all warnings (added -fvisibility=hidden in XCode project)
+ - XCode: Treat warnings as errors
+ - XCode: Uses universal binary. Project compiles both for iPhone and iPad
+ - XCode: Compile option "unroll_loop" is enabled
+ 
+2010-01-07 (v2.0)
+ - BodyNode: SVG "objects" have their own classes: Hero, Princess, Enemy, Platform, Platform1, Elevator, Movingplatform, Spinner, Hole
+ - BodyNode: receives contact events
+ - BodyNode: Hero receives accelerometer and joystick events
+ - BodyNode: Hero uses the contact normal for the jump (more realistic jump)
+ - BodyNode: Platforms uses GL_REPEAT texture params and are rendered with an SpriteSheet
+ - cocos2d: upgraded to  v0.9.0-beta2
+ - GameNode: GameScene is now GameNode
+ - GameNode: doesn't know the objects behaviors
+ - GameNode: added "paused" state
+ - GameNode: removed the BodyUserData structure (not needed anymore)
+ - HUD: displays score and lives
+ - IntroNode: new scene
+ - Levels: Added custom levels: Level0, Level1, Level2, Level3, showing different possible uses.
+ - Levels: Sprites are rendered with an SpriteSheet
+ - Levels: ex level0, ex level 3, and level 5 are not displayed by default.
+ - Level0: new level that uses a big TMX tiled map, background image, sprites, with a parallax layer.
+ - Level1: it's the old level1 with a background image. Box2d debug draw is disabled by default.
+ - Level2: it's the old level2 with: All the platforms are drawn with sprites, it has an elevator (platform that goes up and down),
+		it contains a background image, and evertyhing is "parallaxed". Box2d debug draw is disabled.
+ - Level3: (ex level4). The spinners are drawn with sprites.
+ - MenuNode: MenuScene is now MenuNode
+ - MenuNode and GameNode uses the onEnterTransistionDidFinish to smoother transitions
+ - MenuNode uses moving background
+ - XCode: shipping with libisimulate.a
+
+2009-12-19 (v1.3)
+ - Added support for "kinematic" objects. Cocos2d's actions work within the box2d world (See "Level 2")
+ - Box2d: updated to r31
+ - Updated code to use the new API of Box2d r31
+ - Using a "real" D-Pad Joystick
+ - Using DisplayLink director
+
+2009-11-12 (v1.2)
+ - GameScene: Object creation in it's own file. It's easier to add callbacks now
+ - GameScene: rename BodyMetaData to BodyUserData
+ - Box2d: updated to r23
+ - Object: added Spinner object
+ - Touches: objects can be touched and dragged
+ - Touches: Added some workaournds to convert node to world coordinates when using the camera
+ - Levels: Added a big box around the levels
+ - Levels: Level4 has 2 spinners
+ 
+2009-10-30 (v1.1b)
+ - Improved manual
+ - Level0 includes 2 stars
+
+2009-10-29 (v1.1)
+ - Compiles and runs on SDK 2.2.x or older
+ - Prints warning if using D-Pad and 4Way controls since it's not implemented yet
+ - Added CHANGELOG file
+ 
+2009-10-28 (v1.0)
+  - Initial public release
