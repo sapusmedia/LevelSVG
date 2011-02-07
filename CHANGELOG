@@ -1,3 +1,6 @@
+2010-02-20 (3.0)
+ - [FIX] Hero: Register accelerometer on onEnterTransistionDidFinish
+ 
 2010-12-13 (v2.9)
  - [NEW] Hero: Added new hero: HeroCarTopDown: A top down car
  - [NEW] HUD: When the game is over, displays a menu with Play Again / Main menu

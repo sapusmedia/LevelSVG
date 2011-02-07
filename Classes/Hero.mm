@@ -298,9 +298,9 @@
 }
 
 #pragma mark Hero - Accelerometer
--(void) onEnter
+-(void) onEnterTransitionDidFinish
 {
-	[super onEnter];
+	[super onEnterTransitionDidFinish];
 	
 	ControlType type = [[GameConfiguration sharedConfiguration] controlType];
 	if( type==kControlTypeTilt ) {
