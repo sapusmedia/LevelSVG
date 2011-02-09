@@ -1,5 +1,6 @@
 2010-02-20 (3.0)
  - [FIX] Hero: Register accelerometer on onEnterTransistionDidFinish
+ - [3RD] cocos2d: udpatd to cocos2d v0.99.5 + updates
  
 2010-12-13 (v2.9)
  - [NEW] Hero: Added new hero: HeroCarTopDown: A top down car

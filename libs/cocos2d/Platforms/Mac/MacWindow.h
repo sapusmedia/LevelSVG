@@ -30,59 +30,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "../../ccConfig.h"
 
-//PROTOCOLS:
-
-@protocol MacEventDelegate <NSObject>
-// Mouse
-- (void)mouseDown:(NSEvent *)theEvent;
-- (void)mouseUp:(NSEvent *)theEvent;
-- (void)mouseMoved:(NSEvent *)theEvent;
-- (void)mouseDragged:(NSEvent *)theEvent;
-- (void)rightMouseDown:(NSEvent*)event;
-- (void)rightMouseDragged:(NSEvent*)event;
-- (void)rightMouseUp:(NSEvent*)event;
-- (void)otherMouseDown:(NSEvent*)event;
-- (void)otherMouseDragged:(NSEvent*)event;
-- (void)otherMouseUp:(NSEvent*)event;
-- (void)scrollWheel:(NSEvent *)theEvent;
-- (void)mouseEntered:(NSEvent *)theEvent;
-- (void)mouseExited:(NSEvent *)theEvent;
-
-
-// Keyboard
-- (void)keyDown:(NSEvent *)theEvent;
-- (void)keyUp:(NSEvent *)theEvent;
-- (void)flagsChanged:(NSEvent *)theEvent;
-
-// Touches
-- (void)touchesBeganWithEvent:(NSEvent *)event;
-- (void)touchesMovedWithEvent:(NSEvent *)event;
-- (void)touchesEndedWithEvent:(NSEvent *)event;
-- (void)touchesCancelledWithEvent:(NSEvent *)event;
-
-#if CC_DIRECTOR_MAC_USE_DISPLAY_LINK_THREAD
-- (void)queueEvent:(NSEvent*)event selector:(SEL)selector;
-#endif
-
-@end
-
-/** MacGLView
- 
- Only available for Mac OS X
- */
-@interface MacGLView : NSOpenGLView {
-	id<MacEventDelegate> eventDelegate_;
+@interface MacWindow : NSWindow
+{
 }
+- (id) initWithFrame:(NSRect)frame fullscreen:(BOOL)fullscreen;
 
-@property (nonatomic, readwrite, assign) id<MacEventDelegate> eventDelegate;
-
-// initializes the MacGLView with a frame rect and an OpenGL context
-- (id) initWithFrame:(NSRect)frameRect shareContext:(NSOpenGLContext*)context;
-
-// private
-+(void) load_;
 @end
+
 
 #endif // __MAC_OS_X_VERSION_MAX_ALLOWED
