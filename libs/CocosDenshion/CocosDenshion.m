@@ -821,7 +821,7 @@ static BOOL _mixerRateSet = NO;
 	
 #if TARGET_IPHONE_SIMULATOR	
 	//Fix for issue reported by Walzer, prevents speaker destruction when running in simulator ;)
-	gain = clampf(gain, 0.0f, 2.0f);
+//	gain = clampf(gain, 0.0f, 2.0f);
 #endif
 	
 	int sourceIndex = [self _getSourceIndexForSourceGroup:sourceGroupId];//This method ensures sourceIndex is valid
@@ -1060,7 +1060,7 @@ static BOOL _mixerRateSet = NO;
 	if (!mute_) {
 #if TARGET_IPHONE_SIMULATOR
 		//Fix for issue reported by Walzer, prevents speaker destruction when running in simulator ;)
-		gain = clampf(gain, 0.0f, 2.0f);
+//		gain = clampf(gain, 0.0f, 2.0f);
 #endif
 		alSourcef(_sourceId, AL_GAIN, newGainValue);	
 	} else {

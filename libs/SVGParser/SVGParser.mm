@@ -531,9 +531,11 @@
 	float x,y;
 	pathIndex = 0;
 	b2Vec2 currentPoint = b2Vec2_zero;	
+	b2Vec2	startPath = b2Vec2_zero;
 	b2Vec2	vect;
 	b2Vec2	bezierPoints[4];
 	b2Vec2	*bezierVerts;
+	
 
 	BOOL finished = NO;
 	while( ! finished ) {
@@ -550,7 +552,7 @@
 			case 'M':
 				x = [self pathNextFloat];
 				y = [self pathNextFloat];
-				currentPoint = [self convertPoint:CGPointMake(x,y)];
+				startPath = currentPoint = [self convertPoint:CGPointMake(x,y)];
 				break;
 
 			// Curve
@@ -602,7 +604,9 @@
 			// close path
 			case 'z':
 			case 'Z':
-				// path closed, should I do something ?
+				pathShape.SetAsEdge(currentPoint, startPath);
+				[self applyPhysicsPropertiesInFixture:&fd inBody:body];
+				currentPoint = startPath;
 				break;
 			case 'a':
 			case 'A':
