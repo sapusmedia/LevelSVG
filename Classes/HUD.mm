@@ -40,6 +40,8 @@
 		game_ = aGame;
 
 		CGSize s = [[CCDirector sharedDirector] winSize];
+		
+		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"buttons.plist"];
 
 		// level control configuration:
 		//  - 2-way, 4-way or car ?

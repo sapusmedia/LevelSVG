@@ -37,7 +37,7 @@
 //		flags += b2DebugDraw::e_pairBit;
 //		flags += b2DebugDraw::e_centerOfMassBit;
 
-		debugDraw_ = new GLESDebugDraw( kPhysicsPTMRatio );
+		debugDraw_ = new GLESDebugDraw( kPhysicsPTMRatio * CC_CONTENT_SCALE_FACTOR() );
 		debugDraw_->SetFlags(flags);
 		
 		world_->SetDebugDraw(debugDraw_);

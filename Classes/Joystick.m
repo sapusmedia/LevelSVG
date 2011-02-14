@@ -33,7 +33,7 @@
 		CGSize winSize = [[CCDirector sharedDirector] winSize];
 
 		// pad
-		spritePad_ = [CCSprite spriteWithFile:@"joystick.png"];
+		spritePad_ = [CCSprite spriteWithSpriteFrameName:@"joystick.png"];
 		CGSize s = [spritePad_ contentSize];
 		spritePad_.position = ccp(s.width/2, s.height/2);
 		[self addChild:spritePad_ z:10];
@@ -43,7 +43,7 @@
 
 		// buttons
 		for( int i=0; i<BUTTON_MAX; i++) {
-			buttons_[i].sprite_ = [CCSprite spriteWithFile:@"jump.png"];
+			buttons_[i].sprite_ = [CCSprite spriteWithSpriteFrameName:@"jump.png"];
 			s = [buttons_[i].sprite_ contentSize];
 			buttons_[i].sprite_.position = ccp(winSize.width - (s.width) *(i+1) + s.width/2, s.height/2);
 

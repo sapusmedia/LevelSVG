@@ -53,7 +53,7 @@
 					NSAssert(NO, @"should not happen");
 					break;
 			}
-			buttons_[i].sprite_ = [CCSprite spriteWithFile:buttonName];
+			buttons_[i].sprite_ = [CCSprite spriteWithSpriteFrameName:buttonName];
 			CGSize s = [buttons_[i].sprite_ contentSize];
 			buttons_[i].sprite_.position = pos;
 

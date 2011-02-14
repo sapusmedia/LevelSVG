@@ -10,6 +10,7 @@
 
 #import "Level4.h"
 #import "BodyNode.h"
+#import "Box2dDebugDrawNode.h"
 
 // 
 // Level4
@@ -65,18 +66,18 @@
 	
 	// Background
 	// TIP: Use 16-bit texture in background. It consumes half the memory
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
-	CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
-	background.anchorPoint = ccp(0,0);
-	// Restore 32-bit texture format
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
-	[parallax addChild:background z:-10 parallaxRatio:ccp(0.08f, 0.08f) positionOffset:ccp(-50,-50)];
+//	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
+//	CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
+//	background.anchorPoint = ccp(0,0);
+//	// Restore 32-bit texture format
+//	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
+//	[parallax addChild:background z:-10 parallaxRatio:ccp(0.08f, 0.08f) positionOffset:ccp(-50,-50)];
 	
 	// Box2d debug info: 
 	// TIP: Disable this node in release mode
 	// Box2dDebug draw in front of background
-//	Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];	
-//	[parallax addChild:b2node z:0 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
+	Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];	
+	[parallax addChild:b2node z:30 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
 		
 	// tiled
 	CCTMXTiledMap *tiled = [CCTMXTiledMap tiledMapWithTMXFile:@"level4.tmx"];

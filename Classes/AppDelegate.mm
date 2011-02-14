@@ -59,7 +59,7 @@
 	[director setOpenGLView:glView];
 	
 	// To use High-Res un comment the following line
-//	[director setContentScaleFactor:2];	
+	[director enableRetinaDisplay:YES];
 	
 	// make the OpenGLView a child of the main window
 	[window addSubview:glView];
