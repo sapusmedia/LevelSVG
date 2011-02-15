@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="64" tileheight="64">
  <tileset firstgid="1" name="tile 0" tilewidth="64" tileheight="64" spacing="4" margin="4">
-  <image source="tmx_tiles-hd.png"/>
+  <image source="tmx_tiles.png"/>
  </tileset>
  <layer name="Layer 0" width="64" height="64">
   <data encoding="base64" compression="gzip">

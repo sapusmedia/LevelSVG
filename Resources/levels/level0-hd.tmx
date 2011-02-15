@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
+<map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="tile 0" tilewidth="64" tileheight="64" spacing="4" margin="4">
+  <image source="tmx_tiles.png"/>
+ </tileset>
+ <layer name="Layer 0" width="64" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2YQU7DMBBF3aJKrLsrLMge2IC65QwsgDtwFJBgzSVAcAIoJ2MqEmlqOY7txnYE70lftZvEnd+ZOI6NAQAAAAAAAAAAAAAAAAAAAAAAABiXV9Fb7SAKcGL1m/bzU/RVNJIyLJQO9hSks6wdQGVq+df1XxPy/7+ZWv0/iZ4LxjHk3xdPqVhz/s5U6z+X55XoSHTc9l3+S+S81vx/KjoTnbf9qeY/J1eq/Zf936t2o9rXqj0F/ynr/IXpv4fsYz7V8p/r/SV2PinpP/c7W8pcujTh/8FcNDO7Pm5a9dXq2J59tZxCqP954vj7cqiU41kZ4r/kHsMYOY1hyH9u72P4tdd0MXT+G8exHN5z5Nde08XQ+d96nVkag1L1rNd0MXvGIff/RvSt+g+ix/DQdngXfSRe60P7j9kz9vlf94znG/9FycVQbGvHd5ee8ztc/i8Crtt6t+s+VHeiW/P7/E8dYwr6ARH52KQAQAAA
+  </data>
+ </layer>
+</map>

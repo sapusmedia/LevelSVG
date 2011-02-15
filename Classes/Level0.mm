@@ -59,6 +59,7 @@
 	// Load Zwoptex resources
 	//
 	
+	NSLog(@"**** loading sprites.plist");
 	// sprites
 	[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"sprites.plist"];
 		

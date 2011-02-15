@@ -25,6 +25,7 @@
 #import "GameNode.h"
 #import "MenuScene.h"
 #import "Hero.h"
+#import "SoundMenuItem.h"
 
 @implementation HUD
 
@@ -85,9 +86,9 @@
 		CCLayerColor *color = [CCLayerColor layerWithColor:ccc4(32,32,32,128) width:s.width height:40];
 		[color setPosition:ccp(0,s.height-40)];
 		[self addChild:color z:0];
-		
+
 		// Menu Button
-		CCMenuItem *itemPause = [CCMenuItemImage itemFromNormalImage:@"btn-pause-normal.png" selectedImage:@"btn-pause-selected.png" target:self selector:@selector(buttonRestart:)];
+		CCMenuItem *itemPause = [SoundMenuItem itemFromNormalSpriteFrameName:@"btn-pause-normal.png" selectedSpriteFrameName:@"btn-pause-selected.png" target:self selector:@selector(buttonRestart:)];
 		CCMenu *menu = [CCMenu menuWithItems:itemPause,nil];
 		[self addChild:menu z:1];
 		[menu setPosition:ccp(20,s.height-20)];
