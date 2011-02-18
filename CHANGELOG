@@ -1,13 +1,13 @@
-2010-02-20 (3.0)
+2010-02-18 (3.0)
+ - [FIX] Box2dDebugDrawNode: Supports Retina Display
  - [FIX] Buttons: Converted to spritesheet. Supports Retina Display too
- - [FIX] GameNode: Settings PTM supports Retina Display
  - [FIX] Hero: Register accelerometer on onEnterTransistionDidFinish
  - [FIX] HUD: Supports Retina Display
- - [FIX] Joystick: Uses spriteFrameName instead of file
- - [FIX] Levels: Level4 supports Retina Display
+ - [FIX] Joystick: Uses spriteFrameName instead of file (converted to spritesheet )
+ - [FIX] Levels: All levels supports Retina Display
  - [FIX] Sprites: Sprites supports Retina Display
  - [FIX] SVGParser: implemented "close path". Missing line is added in certain polygons.
- - [3RD] cocos2d: udpatd to cocos2d pre v1.0.0-beta
+ - [3RD] cocos2d: updated to cocos2d pre v1.0.0-beta
  
 2010-12-13 (v2.9)
  - [NEW] Hero: Added new hero: HeroCarTopDown: A top down car
