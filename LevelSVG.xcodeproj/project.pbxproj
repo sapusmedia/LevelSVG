@@ -206,6 +206,7 @@
 		DCCBF1BB0F6022AE0040855A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1BA0F6022AE0040855A /* OpenGLES.framework */; };
 		DCCBF1BD0F6022AE0040855A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1BC0F6022AE0040855A /* QuartzCore.framework */; };
 		DCCBF1BF0F6022AE0040855A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1BE0F6022AE0040855A /* UIKit.framework */; };
+		E004BDF0130F10DA008C4593 /* Default-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E004BDEF130F10DA008C4593 /* Default-hd.png */; };
 		E00F822B13098EF000EF1426 /* level4-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = E00F822A13098EF000EF1426 /* level4-hd.tmx */; };
 		E00F823313098F3E00EF1426 /* background1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F823013098F3E00EF1426 /* background1-hd.png */; };
 		E00F823413098F3E00EF1426 /* background2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E00F823113098F3E00EF1426 /* background2-hd.png */; };
@@ -674,6 +675,7 @@
 		DCCBF1BA0F6022AE0040855A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		DCCBF1BC0F6022AE0040855A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DCCBF1BE0F6022AE0040855A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E004BDEF130F10DA008C4593 /* Default-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-hd.png"; sourceTree = "<group>"; };
 		E00F822A13098EF000EF1426 /* level4-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "level4-hd.tmx"; sourceTree = "<group>"; };
 		E00F823013098F3E00EF1426 /* background1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1-hd.png"; sourceTree = "<group>"; };
 		E00F823113098F3E00EF1426 /* background2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background2-hd.png"; sourceTree = "<group>"; };
@@ -1441,6 +1443,7 @@
 				50F4144510692EE7002A0D5E /* fps_images.png */,
 				50F4144610692EE7002A0D5E /* Icon.png */,
 				50F4144410692EE7002A0D5E /* Default.png */,
+				E004BDEF130F10DA008C4593 /* Default-hd.png */,
 				E09603E7127A40A4006AA61C /* Icon-72.png */,
 				E09603E8127A40A4006AA61C /* Icon-Small-50.png */,
 				E09603E9127A40A4006AA61C /* Icon-Small.png */,
@@ -2021,6 +2024,7 @@
 				E00F82E21309F33400EF1426 /* level7-hd.png in Resources */,
 				E00F83031309F5E300EF1426 /* platforms-hd.plist in Resources */,
 				E00F83041309F5E300EF1426 /* platforms-hd.png in Resources */,
+				E004BDF0130F10DA008C4593 /* Default-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

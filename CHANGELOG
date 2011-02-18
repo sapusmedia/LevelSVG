@@ -7,7 +7,7 @@
  - [FIX] Levels: Level4 supports Retina Display
  - [FIX] Sprites: Sprites supports Retina Display
  - [FIX] SVGParser: implemented "close path". Missing line is added in certain polygons.
- - [3RD] cocos2d: udpatd to cocos2d v0.99.5 + updates
+ - [3RD] cocos2d: udpatd to cocos2d pre v1.0.0-beta
  
 2010-12-13 (v2.9)
  - [NEW] Hero: Added new hero: HeroCarTopDown: A top down car
