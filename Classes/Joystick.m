@@ -95,8 +95,8 @@
 		float dx = padPosition_.x - padCurPosition.x;
 		float dy = padPosition_.y - padCurPosition.y;
 		CGPoint vel = [self getCurrentVelocity];
-		vel.y = sqrt((vel.x*vel.x + vel.y*vel.y));
-		vel.x = atan2f(-dy, dx) * (180/3.14);
+		vel.y = ccpLength(vel);
+		vel.x = atan2f(-dy, dx) * (180/3.1415f);
 		ret = vel;
 	}
 	return ret;

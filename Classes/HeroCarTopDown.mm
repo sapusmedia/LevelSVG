@@ -23,12 +23,12 @@
 // Modify this value to create a bigger/smaller car
 const float CAR_SCALE = 0.2f;
 
-const b2Vec2 leftRearWheelPosition = b2Vec2(-1.5 * CAR_SCALE, 1.90 * CAR_SCALE);
-const b2Vec2 rightRearWheelPosition = b2Vec2(1.5 * CAR_SCALE, 1.9 * CAR_SCALE);
-const b2Vec2 leftFrontWheelPosition = b2Vec2(-1.5 * CAR_SCALE, -1.9 * CAR_SCALE);
-const b2Vec2 rightFrontWheelPosition = b2Vec2(1.5 * CAR_SCALE, -1.9 * CAR_SCALE);
+const b2Vec2 leftRearWheelPosition = b2Vec2(-1.5f * CAR_SCALE, 1.9f * CAR_SCALE);
+const b2Vec2 rightRearWheelPosition = b2Vec2(1.5f * CAR_SCALE, 1.9f * CAR_SCALE);
+const b2Vec2 leftFrontWheelPosition = b2Vec2(-1.5f * CAR_SCALE, -1.9f * CAR_SCALE);
+const b2Vec2 rightFrontWheelPosition = b2Vec2(1.5f * CAR_SCALE, -1.9f * CAR_SCALE);
 
-const float MAX_STEER_ANGLE = M_PI /3.0f ;
+const float MAX_STEER_ANGLE = (float)M_PI /3.0f ;
 const float STEER_SPEED = 2.5f;
 const float HORSEPOWERS = 10 * CAR_SCALE;
 
@@ -118,22 +118,22 @@ const float HORSEPOWERS = 10 * CAR_SCALE;
 		
 		//Left Wheel shape
 		b2PolygonShape leftWheelShapeDef;
-		leftWheelShapeDef.SetAsBox(0.2 * CAR_SCALE, 0.5 * CAR_SCALE);
+		leftWheelShapeDef.SetAsBox(0.2f * CAR_SCALE, 0.5f * CAR_SCALE);
 		leftWheel_->CreateFixture(&leftWheelShapeDef, 1);
 		
 		//Right Wheel shape
 		b2PolygonShape rightWheelShapeDef;
-		rightWheelShapeDef.SetAsBox(0.2 * CAR_SCALE, 0.5 * CAR_SCALE);
+		rightWheelShapeDef.SetAsBox(0.2f * CAR_SCALE, 0.5f * CAR_SCALE);
 		rightWheel_->CreateFixture( &rightWheelShapeDef, 1);
 		
 		//Left Wheel shape
 		b2PolygonShape leftRearWheelShapeDef;
-		leftRearWheelShapeDef.SetAsBox(0.2 * CAR_SCALE, 0.5 * CAR_SCALE);
+		leftRearWheelShapeDef.SetAsBox(0.2f * CAR_SCALE, 0.5f * CAR_SCALE);
 		leftRearWheel_->CreateFixture(&leftRearWheelShapeDef,1);
 		
 		//Right Wheel shape
 		b2PolygonShape rightRearWheelShapeDef;
-		rightRearWheelShapeDef.SetAsBox(0.2 * CAR_SCALE, 0.5 * CAR_SCALE);
+		rightRearWheelShapeDef.SetAsBox(0.2f * CAR_SCALE, 0.5f * CAR_SCALE);
 		rightRearWheel_->CreateFixture(&rightRearWheelShapeDef,1);
 	
 		

@@ -51,7 +51,7 @@
 		CGSize size = CGSizeZero;
 		
 		b2Fixture *fixture = body->GetFixtureList();
-		
+				
 		b2Shape::Type t = fixture->GetType();
 				
 		if( t == b2Shape::e_polygon ) {

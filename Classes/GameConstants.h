@@ -36,7 +36,7 @@
 #define kPhysicsDefaultRestitution (0.0f)
 
 // default Enemy friction
-#define kPhysicsDefaultEnemyFriction	(0.2);
+#define kPhysicsDefaultEnemyFriction	(0.2f);
 
 // default Enemy density
 #define kPhysicsDefaultEnemyDensity		(0.3f)

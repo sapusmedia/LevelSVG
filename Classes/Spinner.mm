@@ -31,7 +31,7 @@
 		// 0. Calculate height, width
 		
 		// default radius
-		float radius = 1.0;
+		float radius = 1.0f;
 		
 		b2Fixture *fixture = body->GetFixtureList();
 		b2Shape::Type t = fixture->GetType();

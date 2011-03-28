@@ -96,10 +96,10 @@
 		// Create upper part of the cart
 		b2Vec2 vertices[5];
 		vertices[0].Set(-1.0f, 0.2f);	// bottom-left
-		vertices[1].Set(0.6,  0.2f);	// bottom-right
-		vertices[2].Set(0.6,  0.5f);	// top-right
+		vertices[1].Set(0.6f,  0.2f);	// bottom-right
+		vertices[2].Set(0.6f,  0.5f);	// top-right
 		vertices[3].Set(0,    0.8f);	// top-center
-		vertices[4].Set(-1.0, 0.8f);	// top-left
+		vertices[4].Set(-1.0f, 0.8f);	// top-left
 		polyShape.Set(vertices, 5);
 		fd.filter.groupIndex = -kCollisionFilterGroupIndexHero;
 		cart->CreateFixture(&fd);
@@ -147,7 +147,7 @@
 		// Wheels
 		//
 
-		bodyDef.position = axle1_->GetWorldCenter() + b2Vec2( 0, -0.2);
+		bodyDef.position = axle1_->GetWorldCenter() + b2Vec2( 0, -0.2f);
 		wheel1_ = world_->CreateBody(&bodyDef);
 
 		b2CircleShape	circleShape;
@@ -160,7 +160,7 @@
 		wheel1_->CreateFixture(&fd);
 		
 		// Front Wheel (Wheel 2)
-		bodyDef.position = axle2_->GetWorldCenter() + b2Vec2( 0, -0.2);
+		bodyDef.position = axle2_->GetWorldCenter() + b2Vec2( 0, -0.2f);
 		wheel2_ = world_->CreateBody(&bodyDef);
 		wheel2_->CreateFixture(&fd);
 
@@ -216,11 +216,11 @@
 	
 	if( direction.x != 0 ) {
 		motor1_->EnableMotor(true);
-		motor1_->SetMotorSpeed(MOTOR_SPEED* M_PI * direction.x);
+		motor1_->SetMotorSpeed((float32) (MOTOR_SPEED* M_PI * direction.x));
 		motor1_->SetMaxMotorTorque( 10 );
 
 		motor2_->EnableMotor(true);
-		motor2_->SetMotorSpeed(MOTOR_SPEED* M_PI * direction.x);
+		motor2_->SetMotorSpeed((float32) (MOTOR_SPEED* M_PI * direction.x));
 		motor2_->SetMaxMotorTorque( 10 );
 		
 	} else {
@@ -327,8 +327,8 @@
 	axle1_->SetTransform( body_->GetWorldCenter(), axle1_->GetAngle() );
 	axle2_->SetTransform( body_->GetWorldCenter(), axle2_->GetAngle() );
 
-	wheel1_->SetTransform( axle1_->GetWorldCenter() + b2Vec2( 0, -0.2) , wheel1_->GetAngle() );
-	wheel2_->SetTransform( axle2_->GetWorldCenter() + b2Vec2( 0, -0.2) , wheel2_->GetAngle() );
+	wheel1_->SetTransform( axle1_->GetWorldCenter() + b2Vec2( 0, -0.2f) , wheel1_->GetAngle() );
+	wheel2_->SetTransform( axle2_->GetWorldCenter() + b2Vec2( 0, -0.2f) , wheel2_->GetAngle() );
 	
 }
 

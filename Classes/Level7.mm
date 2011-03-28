@@ -51,7 +51,7 @@
 	CCSprite *background = [CCSprite spriteWithFile:@"level7.png"];
 	[background setAnchorPoint:ccp(0,0)];
 //	// TIP: The correct postion can be obtained from Inkscape
-	[background setPosition:ccp(-339.43,-276.76)];
+	[background setPosition:ccp(-339.43f,-276.76f)];
 	[self addChild:background z:-10];
 	// Restore 32-bit texture format
 	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
