@@ -11,8 +11,8 @@
 // box2d classes
 class b2Body;
 class b2Contact;
-class b2ContactImpulse;
-class b2Manifold;
+struct b2ContactImpulse;
+struct b2Manifold;
 @class GameNode;
 
 #import "cocos2d.h"

@@ -253,9 +253,6 @@
 
 -(void) updateFrames:(CGPoint)direction
 {
-	// rect is the texture rect of the sprite
-	CGRect r = rect_;
-
 	const char *dir = "left";
 	unsigned int index = 0;
 

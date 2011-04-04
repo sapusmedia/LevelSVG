@@ -21,7 +21,7 @@
 	GameNode	*game_;
 
 	// joystick and joysprite. weak ref
-	id<JoystickProtocol>	joystick_;
+	CCNode<JoystickProtocol>	*joystick_;
 	
 	CCLabelBMFont	*score_;
 	CCLabelBMFont	*lives_;

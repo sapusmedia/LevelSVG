@@ -100,9 +100,7 @@
 		
 		// camera
 		cameraOffset_ = CGPointZero;
-		
-		CGSize s = [[CCDirector sharedDirector] winSize];
-		
+
 		CGSize screenSize = [CCDirector sharedDirector].winSize;
 		CCLOG(@"Screen width %0.2f screen height %0.2f",screenSize.width,screenSize.height);
 		
