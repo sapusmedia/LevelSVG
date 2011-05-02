@@ -2,6 +2,7 @@
  - [NEW] Levels: Added runtime option to show object's wireframe from Settings
  - [FIX] All: code doesn't generates warnings with implicit convertions to 32-bit
  - [FIX] MovingPlatform: Register movement on onEnterTransitionDidFinish.
+ - [FIX] Xcode: Compiles without warnings in Xcode 4
  - [3RD] cocos2d: updated to v1.0-rc2
  - [3RD] FontLabel: updated to latest stable version
 
