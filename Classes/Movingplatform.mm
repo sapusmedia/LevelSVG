@@ -102,9 +102,9 @@
 //
 // Needed when the platform is updated using SetLinearVelocity()
 //
--(void) onEnter
-{
-	[super onEnter];
+-(void) onEnterTransitionDidFinish
+{	
+	[super onEnterTransitionDidFinish];
 	goingForward_ = YES;
 	
 	float vel = (translationInPixels_ / duration_) /kPhysicsPTMRatio;
@@ -120,8 +120,7 @@
 	
 	body_->SetLinearVelocity( velocity_ );
 	
-	[self schedule: @selector(updatePlatform:) interval:duration_];
-
+	[self schedule: @selector(updatePlatform:) interval:duration_];	
 }
 
 //

@@ -1,9 +1,10 @@
-2010-03-28 (3.1)
+2011-05-02 (3.1)
  - [FIX] All: code doesn't generates warnings with implicit convertions to 32-bit
- - [3RD] cocos2d: updated to v1.0-rc
+ - [FIX] MovingPlatform: Register movement on onEnterTransitionDidFinish.
+ - [3RD] cocos2d: updated to v1.0-rc2
  - [3RD] FontLabel: updated to latest stable version
 
-2010-02-18 (3.0)
+2011-02-18 (3.0)
  - [FIX] Box2dDebugDrawNode: Supports Retina Display
  - [FIX] Buttons: Converted to spritesheet. Supports Retina Display too
  - [FIX] Hero: Register accelerometer on onEnterTransistionDidFinish
