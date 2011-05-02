@@ -33,6 +33,7 @@ static GameConfiguration *_sharedConfiguration;
 @synthesize controlDirection=controlDirection_;
 @synthesize controlButton=controlButton_;
 @synthesize gravity=gravity_;
+@synthesize enableWireframe=enableWireframe_;
 
 #pragma mark singleton stuff
 + (GameConfiguration *)sharedConfiguration

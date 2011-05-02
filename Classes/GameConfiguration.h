@@ -43,12 +43,14 @@ typedef enum {
 	ControlDirection	controlDirection_;
 	ControlButton		controlButton_;
 	CGPoint				gravity_;
+	BOOL				enableWireframe_;
 };
 
 @property (nonatomic,readwrite)	ControlType			controlType;
 @property (nonatomic,readwrite)	ControlDirection	controlDirection;
 @property (nonatomic,readwrite)	ControlButton		controlButton;
 @property (nonatomic,readwrite) CGPoint				gravity;
+@property (nonatomic,readwrite) BOOL				enableWireframe;
 
 // returns the singleton
 +(id) sharedConfiguration;

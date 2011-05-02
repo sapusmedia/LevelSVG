@@ -46,6 +46,7 @@
 #import "Level2.h"
 #import "BodyNode.h"
 #import "Box2dDebugDrawNode.h"
+#import "GameConfiguration.h"
 
 
 @implementation Level2
@@ -85,8 +86,10 @@
 	
 	// TIP: Disable this node in release mode
 	// Box2dDebug draw in front of background
-//	Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];
-//	[parallax addChild:b2node z:0 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
+	if( [[GameConfiguration sharedConfiguration] enableWireframe] ) {
+		Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];
+		[parallax addChild:b2node z:30 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
+	}
 	
 	// batchnodes: platforms should be drawn before sprites
 	[parallax addChild:platformBatchNode_ z:5 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];

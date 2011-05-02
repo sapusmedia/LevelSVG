@@ -11,6 +11,7 @@
 #import "Level4.h"
 #import "BodyNode.h"
 #import "Box2dDebugDrawNode.h"
+#import "GameConfiguration.h"
 
 // 
 // Level4
@@ -76,8 +77,10 @@
 	// Box2d debug info: 
 	// TIP: Disable this node in release mode
 	// Box2dDebug draw in front of background
-//	Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];	
-//	[parallax addChild:b2node z:30 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
+	if( [[GameConfiguration sharedConfiguration] enableWireframe] ) {
+		Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];	
+		[parallax addChild:b2node z:30 parallaxRatio:ccp(1,1) positionOffset:ccp(0,0)];
+	}
 		
 	// tiled
 	CCTMXTiledMap *tiled = [CCTMXTiledMap tiledMapWithTMXFile:@"level4.tmx"];

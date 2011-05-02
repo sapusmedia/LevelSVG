@@ -42,14 +42,19 @@
 								   [CCMenuItemFont itemFromString: @"Show FPS: OFF"],
 								   [CCMenuItemFont itemFromString: @"Show FPS: ON"],
 								   nil];
-		
+
+		CCMenuItemToggle *item3 = [CCMenuItemToggle itemWithTarget:self selector:@selector(controlWireframe:) items:
+								   [CCMenuItemFont itemFromString: @"Wireframe: OFF"],
+								   [CCMenuItemFont itemFromString: @"Wireframe: ON"],
+								   nil];
+
 		
 		GameConfiguration *config = [GameConfiguration sharedConfiguration];
 		if( config.controlType == kControlTypePad )
 			item1.selectedIndex = 1;
 		
 		CCMenu *menu = [CCMenu menuWithItems:
-					  item1, item2,
+					  item1, item2, item3,
 						nil];
 		[menu alignItemsVertically];
 		
@@ -85,6 +90,16 @@
 		[[CCDirector sharedDirector] setDisplayFPS:NO];
 	else
 		[[CCDirector sharedDirector] setDisplayFPS:YES];
+}
+
+-(void) controlWireframe:(id)sender
+{
+	CCMenuItemToggle *item = (CCMenuItemToggle*) sender;	
+	GameConfiguration *config = [GameConfiguration sharedConfiguration];
+	if( item.selectedIndex == 0 )
+		config.enableWireframe = NO;
+	else
+		config.enableWireframe = YES;
 }
 
 -(void) controlCallback:(id)sender

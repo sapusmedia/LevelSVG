@@ -39,6 +39,8 @@
 #import "Level1.h"
 #import "BodyNode.h"
 #import "Box2dDebugDrawNode.h"
+#import "GameConfiguration.h"
+
 
 @implementation Level1
 -(void) initGraphics
@@ -55,8 +57,11 @@
 	
 	// TIP: Disable this node in release mode
 	// Box2dDebug draw in front of background
-//	Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];
-//	[self addChild:b2node z:0];
+	if( [[GameConfiguration sharedConfiguration] enableWireframe] ) {
+		Box2dDebugDrawNode *b2node = [Box2dDebugDrawNode nodeWithWorld:world_];
+		[self addChild:b2node z:30];
+	}
+
 	
 	// weak ref
 	spritesBatchNode_ = [CCSpriteBatchNode batchNodeWithFile:@"sprites.png" capacity:20];	
