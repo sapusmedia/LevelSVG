@@ -33,6 +33,8 @@ http://www.niksula.cs.hut.fi/~hkankaan/Homepages/bezierfast.html
 
 #include <Box2D/Box2D.h>
 
+b2Vec2* calculate_bezier(b2Vec2 p[4], uint32 steps);
+
 b2Vec2* calculate_bezier(b2Vec2 p[4], uint32 steps=30) {
 	if (steps == 0) {
 		return NULL;

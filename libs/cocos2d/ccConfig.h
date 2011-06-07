@@ -2,6 +2,7 @@
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
  *
  * Copyright (c) 2008-2010 Ricardo Quesada
+ * Copyright (c) 2011 Zynga Inc.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -210,7 +211,7 @@
 /** @def CC_USE_LA88_LABELS_ON_NEON_ARCH
  If enabled, it will use LA88 (16-bit textures) on Neon devices for CCLabelTTF objects.
  If it is disabled, or if it is used on another architecture it will use A8 (8-bit textures).
- On Neon devices, LA88 textures are 6% faster than A8 textures, but then will consule 2x memory.
+ On Neon devices, LA88 textures are 6% faster than A8 textures, but then will consume 2x memory.
  
  This feature is disabled by default.
  

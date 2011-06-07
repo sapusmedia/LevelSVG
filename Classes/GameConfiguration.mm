@@ -38,26 +38,16 @@ static GameConfiguration *_sharedConfiguration;
 #pragma mark singleton stuff
 + (GameConfiguration *)sharedConfiguration
 {
-	@synchronized([GameConfiguration class])
-	{
-		if (!_sharedConfiguration)
-			[[self alloc] init];
-		return _sharedConfiguration;
-	}
-	// to avoid compiler warning
-	return nil;
+	if (!_sharedConfiguration)
+		_sharedConfiguration = [[self alloc] init];
+	
+	return _sharedConfiguration;
 }
 
 +(id)alloc
 {
-	@synchronized([GameConfiguration class])
-	{
-		NSAssert(_sharedConfiguration == nil, @"Attempted to allocate a second instance of a singleton.");
-		_sharedConfiguration = [super alloc];
-		return _sharedConfiguration;
-	}
-	// to avoid compiler warning
-	return nil;
+	NSAssert(_sharedConfiguration == nil, @"Attempted to allocate a second instance of a singleton.");
+	return [super alloc];
 }
 
 -(id) init

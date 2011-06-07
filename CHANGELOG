@@ -1,3 +1,8 @@
+2011-06-xx (3.1)
+- [FIX] Code compiles OK with Xcode 4.2 + llvm 3.0
+- [FIX] Xcode projects: Added NS_BLOCK_ASSERTIONS in Release and Distribution configurations
+- [3RD] Updated to v1.0-rc3 + fixes
+
 2011-05-02 (3.1)
  - [NEW] Levels: Added runtime option to show object's wireframe from Settings
  - [FIX] All: code doesn't generates warnings with implicit convertions to 32-bit
