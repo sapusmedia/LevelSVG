@@ -669,8 +669,8 @@
 	BOOL ok = [scanner scanFloat:&ret];
 	NSAssert(ok, @"SVG parser: path error parsing float");
 	
-	// find next comma
-	for( ; pathIndex < stringLen ; pathIndex++ ) {
+	// find next comma (ok is here just to trick the parser)
+	for( ; ok && pathIndex < stringLen ; pathIndex++ ) {
 		if( str[pathIndex] == ',' ) {
 			pathIndex++;
 			break;
