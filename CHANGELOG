@@ -1,7 +1,8 @@
-2011-06-xx (3.1)
-- [FIX] Code compiles OK with Xcode 4.2 + llvm 3.0
+2011-06-11 (3.2)
+- [FIX] All: Code compiles OK with Xcode 4.2 + llvm 3.0
 - [FIX] Xcode projects: Added NS_BLOCK_ASSERTIONS in Release and Distribution configurations
-- [3RD] Updated to v1.0-rc3 + fixes
+- [FIX] Xcode: uses Xcode v3.2 project format
+- [3RD] Updated to cocos2d v1.0-rc3 + fixes
 
 2011-05-02 (3.1)
  - [NEW] Levels: Added runtime option to show object's wireframe from Settings
