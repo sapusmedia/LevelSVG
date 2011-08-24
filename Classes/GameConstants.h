@@ -58,4 +58,4 @@
 #define kPhysicsWorldGravityY	(-10)
 
 // How many nodes can be removed per cycle
-#define kMaxNodesToBeRemoved	6
+#define kMaxNodesToBeRemoved	10
