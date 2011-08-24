@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D727071405A1F800A81639 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D727061405A1F800A81639 /* RootViewController.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1F3B9A2D0EF2145700286867 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B9A2B0EF2145700286867 /* AppDelegate.mm */; };
 		50135FB811B54D46007AD4CD /* Portal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 50135FB611B54D46007AD4CD /* Portal.mm */; };
@@ -433,6 +434,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00D727051405A1F800A81639 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		00D727061405A1F800A81639 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* LevelSVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelSVG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3B9A2B0EF2145700286867 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		1F3B9A2C0EF2145700286867 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 				5090F5BD10890231007CBFC7 /* HUD.mm */,
 				5085B975115C02F6001E818C /* SoundMenuItem.h */,
 				5085B976115C02F7001E818C /* SoundMenuItem.m */,
+				00D727051405A1F800A81639 /* RootViewController.h */,
+				00D727061405A1F800A81639 /* RootViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2081,6 +2086,7 @@
 				E0D2C9C112B5701E008D5DBB /* Level7.mm in Sources */,
 				E0D2C9D812B5822F008D5DBB /* HeroCarTopDown.mm in Sources */,
 				E0D2CB3412B68A30008D5DBB /* JoystickCar.m in Sources */,
+				00D727071405A1F800A81639 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

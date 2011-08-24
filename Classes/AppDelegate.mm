@@ -14,44 +14,62 @@
 #import "SimpleAudioEngine.h"
 
 // local imports
+#import "RootViewController.h"
 #import "AppDelegate.h"
 #import "IntroScene.h"
 
 
 @interface AppDelegate (Sounds)
--(void) initSounds;
+- (void) initSounds;
+- (void) removeStartupFlicker;
 @end
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window=window_;
+@synthesize viewController=viewController_;
+
+- (void) removeStartupFlicker
+{
+	//
+	// THIS CODE REMOVES THE STARTUP FLICKER
+	//
+	// Uncomment the following code if your Application only supports landscape mode
+	//
+	
+	//	CC_ENABLE_DEFAULT_GL_STATES();
+	//	CCDirector *director = [CCDirector sharedDirector];
+	//	CGSize size = [director winSize];
+	//	CCSprite *sprite = [CCSprite spriteWithFile:@"Default.png"];
+	//	sprite.position = ccp(size.width/2, size.height/2);
+	//	sprite.rotation = -90;
+	//	[sprite visit];
+	//	[[director openGLView] swapBuffers];
+	//	CC_ENABLE_DEFAULT_GL_STATES();
+}
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
 	// Init the window
-	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
-	// must be called before any othe call to the director
-	[CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
-	
+	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		
 	// before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// landscape orientation
-	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
+	// Init the view controller
+	viewController_ = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+	viewController_.wantsFullScreenLayout = YES;
 	
-	// set FPS at 60
-	[director setAnimationInterval:1.0/60];
-	
-	// Display FPS ?
-//	[director setDisplayFPS:YES];
-	
-	// Create an EAGLView with a RGB565 color buffer, and a depth buffer of 0-bits
-	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
+	//
+	// Create the EAGLView manually
+	//  1. Create a RGB565 format. Alternative: RGBA8
+	//	2. depth format of 0 bit. Use 16 or 24 bit for 3d effects, like CCPageTurnTransition
+	//
+	//
+	EAGLView *glView = [EAGLView viewWithFrame:[window_ bounds]
 								   pixelFormat:kEAGLColorFormatRGB565
 								   depthFormat:0	// GL_DEPTH_COMPONENT24_OES
 						];
-
 	// Enable multiple touches
 	[glView setMultipleTouchEnabled:YES];
 	
@@ -59,13 +77,22 @@
 	[director setOpenGLView:glView];
 	
 	// To use High-Res un comment the following line
-	[director enableRetinaDisplay:YES];
+	if (![director enableRetinaDisplay:YES]) {
+		CCLOG(@"Retina Display Not supported");
+	}
 	
-	// make the OpenGLView a child of the main window
-	[window addSubview:glView];
+	[director setAnimationInterval:1.0f/60.0f];
+	// Display FPS ?
+	//	[director setDisplayFPS:YES];
+
+	// make the OpenGLView a child of the view controller
+	[viewController_ setView:glView];
+	
+	// make the View Controller a child of the main window
+	[window_ addSubview:viewController_.view];
 	
 	// make main window visible
-	[window makeKeyAndVisible];	
+	[window_ makeKeyAndVisible];	
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
@@ -120,7 +147,15 @@
 {	
 	// TIP:
 	// Save the game state here
-	[[CCDirector sharedDirector] end];
+	CCDirector *director = [CCDirector sharedDirector];
+	
+	[[director openGLView] removeFromSuperview];
+	
+	[viewController_ release];
+	
+	[window_ release];
+	
+	[director end];	
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
@@ -129,7 +164,8 @@
 
 - (void)dealloc {
 	[[CCDirector sharedDirector] end];
-	[window release];
+	[window_ release];
+	[viewController_ release];
 	[super dealloc];
 }
 
