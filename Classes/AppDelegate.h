@@ -11,10 +11,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class RootViewController;
+
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
-	UIWindow *window;
+	UIWindow *window_;
+	RootViewController *viewController_;
 }
 
 @property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) RootViewController *viewController;
 
 @end

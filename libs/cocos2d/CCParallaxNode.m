@@ -34,9 +34,9 @@
 	CGPoint offset_;
 	CCNode *child_;	// weak ref
 }
-@property (atomic,readwrite) CGPoint ratio;
-@property (atomic,readwrite) CGPoint offset;
-@property (atomic,readwrite,assign) CCNode *child;
+@property (nonatomic,readwrite) CGPoint ratio;
+@property (nonatomic,readwrite) CGPoint offset;
+@property (nonatomic,readwrite,assign) CCNode *child;
 +(id) pointWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 -(id) initWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 @end
