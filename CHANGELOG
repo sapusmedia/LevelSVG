@@ -1,6 +1,7 @@
 2011-08-24 (3.3)
 - [3RD] cocos2d: udpated to v1.0.1
 - [NEW] All: Using RootViewController now
+- [FIX] MovingPlatform: now work as expected when game state is kGameStatePaused
 
 2011-06-11 (3.2)
 - [FIX] All: Code compiles OK with Xcode 4.2 + llvm 3.0
