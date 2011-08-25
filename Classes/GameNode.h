@@ -32,6 +32,7 @@ typedef enum
 } GameState;
 
 #define kGameNodeFollowActionTag	1
+#define kGameChangedStateNotification @"GameStateChangedNotification"
 
 // HelloWorld Layer
 @interface GameNode : CCLayer
@@ -115,6 +116,7 @@ typedef enum
 -(void) gameOver;
 -(void) increaseScore:(int)score;
 -(void) increaseLife:(int)lives;
+- (void) togglePause;
 
 // creates the foreground and background graphics
 -(void) initGraphics;

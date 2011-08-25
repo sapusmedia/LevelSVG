@@ -180,6 +180,7 @@
 
 -(void) buttonRestart:(id)sender
 {
+//    [game_ togglePause];
 	[[CCDirector sharedDirector] replaceScene: [CCTransitionCrossFade transitionWithDuration:1 scene:[MenuScene scene]]];
 }
 

@@ -13,6 +13,7 @@
 
 #import "GameConstants.h"
 #import "Movingplatform.h"
+#import "GameNode.h"
 
 //
 // MovingPlatform: A Kinematic platfroms that uses cocos2d actions instead of box2d forces
@@ -120,7 +121,30 @@
 	
 	body_->SetLinearVelocity( velocity_ );
 	
-	[self schedule: @selector(updatePlatform:) interval:duration_];	
+	[self schedule: @selector(updatePlatform:) interval:duration_];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameStateChanged:) name:kGameChangedStateNotification object:nil];
+}
+
+- (void)onExit {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)gameStateChanged:(NSNotification *)notification {
+	if (game_.gameState == kGameStatePaused) {
+		currentPosition_ = body_->GetPosition();
+		[self unschedule:@selector(updatePlatform:)];
+		wasPaused_ = YES;
+	} else {
+		if (wasPaused_) {
+			// trigger the next schedule based on the current position,
+			// direction, velocity and final (or orig) position
+			// v = d/t; t = d/v;
+			b2Vec2 targetPoint = (goingForward_) ? finalPosition_ : origPosition_;
+			float distanceToTarget = (direction_ == kPlatformDirectionHorizontal) ? fabsf(currentPosition_.x - targetPoint.x) : fabsf(currentPosition_.y - targetPoint.y);
+			float t = distanceToTarget / (direction_ == kPlatformDirectionHorizontal ? velocity_.x : velocity_.y);
+			[self schedule:@selector(updatePlatform:) interval:t];
+		}
+	}
 }
 
 //
@@ -128,9 +152,6 @@
 //
 -(void) updatePlatform:(ccTime)dt
 {
-	b2Vec2 currVel = body_->GetLinearVelocity();
-	
-	b2Vec2 destPos;
 	if( goingForward_ ) {
 		body_->SetTransform( finalPosition_, 0 );
 		body_->SetLinearVelocity( -velocity_ );
@@ -139,6 +160,13 @@
 		body_->SetTransform( origPosition_, 0 );
 		body_->SetLinearVelocity( velocity_ );
 		goingForward_ = YES;
+	}
+	// if we were paused, then unschedule the selector and reschedule it with
+	// the right duration
+	if (wasPaused_) {
+		[self unschedule:@selector(updatePlatform:)];
+		[self schedule:@selector(updatePlatform:) interval:duration_];
+		wasPaused_ = NO;
 	}
 }
 

@@ -352,6 +352,22 @@
 	[hud_ onUpdateScore:score_];
 }
 
+- (void) togglePause {
+    if (gameState_ == kGameStateGameOver) {
+        return;
+    }
+    
+    if (gameState_ == kGameStatePlaying) {
+        gameState_ = kGameStatePaused;
+    } else {
+        gameState_ = kGameStatePlaying;
+    }
+	// NOTE:
+	// this is synchronic, so if you have too many moving platforms it might
+	// affect performance
+	[[NSNotificationCenter defaultCenter] postNotificationName:kGameChangedStateNotification object:nil];
+}
+
 #pragma mark GameNode - Box2d Callbacks
 
 // will be called for each created body in the parser

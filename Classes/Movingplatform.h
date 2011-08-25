@@ -33,9 +33,12 @@ enum{
 	float	translationInPixels_;
 	b2Vec2	origPosition_;
 	b2Vec2	finalPosition_;
+	b2Vec2	currentPosition_; // used when paused
 	b2Vec2	velocity_;
 	BOOL	goingForward_;
+	BOOL	wasPaused_;
 }
 
+- (void)gameStateChanged:(NSNotification *)notification;
 //-(CCAction*) getAction;
 @end
