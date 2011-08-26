@@ -120,7 +120,7 @@
 		settings.bezierSegments = kPhysicsDefaultBezierSegments;
 		
 		// create box2d objects from SVG file in world
-		[SVGParser parserWithSVGFilename:[self SVGFileName] b2World:world_ settings:&settings target:self selector:@selector(physicsCallbackWithBody:attribs:)];	
+		[SVGParser parserWithSVGFilename:[self SVGFileName] b2World:world_ settings:&settings target:self physicsSelector:@selector(physicsCallbackWithBody:attribs:) imageSelector:@selector(imageCallbackWithSprite:attribs:)];	
 
 		// Box2d iterations default values
 		worldVelocityIterations_ = 6;
@@ -420,6 +420,29 @@
 		} else
 			NSLog(@"Game Scene callback: unrecognized key: %@", key);
 	}
+}
+
+- (void) imageCallbackWithSprite:(CCSprite *)sprite attribs:(NSString *)gameAttribs
+{
+	NSArray *values = [gameAttribs componentsSeparatedByString:@","];
+	int zorder = 0;
+	int tag = 0;
+	if (values) {
+		for (NSString *propValue in values) {
+			NSArray *arr = [propValue componentsSeparatedByString:@"="];
+			NSString *key = [arr objectAtIndex:0];
+			NSString *value = [arr objectAtIndex:1];
+			
+			key = [key lowercaseString];
+			if ([key isEqualToString:@"zorder"]) {
+				zorder = [value intValue];
+			} else if ([key isEqualToString:@"tag"]) {
+				tag = [value intValue];
+			}
+		}
+	}
+	// add the sprite
+	[self addChild:sprite z:zorder tag:tag];
 }
 
 // This is the default behavior
