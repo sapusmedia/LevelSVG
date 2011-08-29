@@ -729,6 +729,20 @@
 	float y;
 	float angle;
 	
+	// The image filename (which will be the sprite frame name)
+	NSString *imageName = [attributeDict valueForKey:@"xlink:href"];
+	// create sprite from image
+	// we use a sprite frame since we might be using the same image
+	CCSpriteFrame *spriteFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imageName];
+	// this might not be the best idea...
+	if (!spriteFrame) {
+		CCTexture2D *tex = [[CCTextureCache sharedTextureCache] addImage:imageName];
+		spriteFrame = [[CCSpriteFrame alloc] initWithTexture:tex rect:CGRectMake(0, 0, tex.contentSize.width, tex.contentSize.height)];
+		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:spriteFrame name:imageName];
+	}
+	
+	CCSprite *sprite = [CCSprite spriteWithSpriteFrame:spriteFrame];
+	
 	float height = [[attributeDict valueForKey:@"height"] floatValue];
 	float width  = [[attributeDict valueForKey:@"width"] floatValue];
 	
@@ -749,23 +763,10 @@
 		y = [[attributeDict valueForKey:@"y"] floatValue];
 		angle = 0;
 	}
+	x += (width * 0.5f);
+	y += (height * 0.5f);
 	y = (SVGSize.height - y);
-	
-	// The image filename (which will be the sprite frame name)
-	NSString *imageName = [attributeDict valueForKey:@"xlink:href"];
-	
 		
-	// create sprite from image
-	// we use a sprite frame since we might be using the same image
-	CCSpriteFrame *spriteFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imageName];
-	// this might not be the best idea...
-	if (!spriteFrame) {
-		CCTexture2D *tex = [[CCTextureCache sharedTextureCache] addImage:imageName];
-		spriteFrame = [[CCSpriteFrame alloc] initWithTexture:tex rect:CGRectMake(0, 0, tex.contentSize.width, tex.contentSize.height)];
-		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:spriteFrame name:imageName];
-	}
-	
-	CCSprite *sprite = [CCSprite spriteWithSpriteFrame:spriteFrame];
 	[sprite setRotation:angle];
 	[sprite setScaleX:width/(sprite.contentSize.width)];
 	[sprite setScaleY:height/(sprite.contentSize.height)];
@@ -866,12 +867,17 @@
 				isPhysicsLayer = YES;
 			else
 				isPhysicsLayer = NO;
+			
+			if( [label hasPrefix:@"sprites:"] )
+				isSpritesLayer = YES;
+			else
+				isSpritesLayer = NO;
 		}
 	}
 	
 	// only parse the layer if the name begins with "physics:"
 	// skip non physics layers - unless we're on a image
-	if( ! isPhysicsLayer ) {
+	if( isSpritesLayer ) {
 		if ([elementName isEqualToString:@"image"]) {
 			sprite = [self parseImage:attributeDict];
 		} else {

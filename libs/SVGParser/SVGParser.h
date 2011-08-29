@@ -63,6 +63,8 @@ struct SVGParserSettings
 	
 	// is the current SVG layer a "physics" layer
 	BOOL		isPhysicsLayer;
+	// is the current SVG layer an "sprites" layer
+	BOOL		isSpritesLayer;
 	
 	// Physics settings
 	SVGParserSettings	settings;
