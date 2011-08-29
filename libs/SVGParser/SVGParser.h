@@ -68,7 +68,8 @@ struct SVGParserSettings
 	SVGParserSettings	settings;
 
 	// callback
-	NSInvocation	*callbackInvocation;
+	NSInvocation	*physicsCallbackInvocation;
+	NSInvocation	*imageCallbackInvocation;
 	
 	// attribs
 	NSString		*transformAttribs_;
@@ -88,9 +89,9 @@ struct SVGParserSettings
 
 // creates the parser with a filename, world, settings, and a callback
 // important: the target is not retained
-+(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target selector:(SEL)sel;
++(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target physicsSelector:(SEL)s1 imageSelector:(SEL)s2;
 
 // initializes the parser with a filename, world, settings and a callback
 // important: the target is not retained
--(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target selector:(SEL)sel;
+-(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target physicsSelector:(SEL)s1 imageSelector:(SEL)s2;
 @end
