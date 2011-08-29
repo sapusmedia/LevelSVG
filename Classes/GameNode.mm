@@ -424,10 +424,10 @@
 
 - (void) imageCallbackWithSprite:(CCSprite *)sprite attribs:(NSString *)gameAttribs
 {
-	NSArray *values = [gameAttribs componentsSeparatedByString:@","];
 	int zorder = 0;
 	int tag = 0;
-	if (values) {
+	if (gameAttribs) {
+		NSArray *values = [gameAttribs componentsSeparatedByString:@","];
 		for (NSString *propValue in values) {
 			NSArray *arr = [propValue componentsSeparatedByString:@"="];
 			NSString *key = [arr objectAtIndex:0];

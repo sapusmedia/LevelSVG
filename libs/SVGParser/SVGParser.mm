@@ -749,19 +749,12 @@
 		y = [[attributeDict valueForKey:@"y"] floatValue];
 		angle = 0;
 	}
+	y = (SVGSize.height - y);
 	
 	// The image filename (which will be the sprite frame name)
 	NSString *imageName = [attributeDict valueForKey:@"xlink:href"];
-//	NSString *scaled    = [attributeDict valueForKey:@"scaled"];
-//	float scaleX        = [[attributeDict valueForKey:@"scalex"] floatValue];
-//	float scaleY        = [[attributeDict valueForKey:@"scaley"] floatValue];
 	
-	// test for nil values (not the best way...)
-//	if (![attributeDict valueForKey:@"scalex"]) scaleX = 1.0f;
-//	if (![attributeDict valueForKey:@"scaley"]) scaleY = 1.0f;
-	
-	y = (SVGSize.height - y);
-	
+		
 	// create sprite from image
 	// we use a sprite frame since we might be using the same image
 	CCSpriteFrame *spriteFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imageName];
@@ -774,10 +767,9 @@
 	
 	CCSprite *sprite = [CCSprite spriteWithSpriteFrame:spriteFrame];
 	[sprite setRotation:angle];
-	[sprite setPosition:CGPointMake(x, y)];
 	[sprite setScaleX:width/(sprite.contentSize.width)];
 	[sprite setScaleY:height/(sprite.contentSize.height)];
-	[sprite setAnchorPoint:CGPointZero];
+	[sprite setPosition:CGPointMake(x, y)];
 	
 	return sprite;	
 }
@@ -916,7 +908,7 @@
 		[physicsCallbackInvocation setArgument:&gameAttribs_ atIndex:3];
 		[physicsCallbackInvocation invoke];
 	}
-	if (sprite && gameAttribs_) {
+	if (sprite) {
 		[imageCallbackInvocation setArgument:&sprite atIndex:2];
 		[imageCallbackInvocation setArgument:&gameAttribs_ atIndex:3];
 		[imageCallbackInvocation invoke];
