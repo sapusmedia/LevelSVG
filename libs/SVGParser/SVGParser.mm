@@ -724,7 +724,6 @@
 #pragma mark SVGParser - Image Parser
 
 - (CCSprite *) parseImage:(NSDictionary*) attributeDict {	
-	
 	float x;
 	float y;
 	float angle;
@@ -883,7 +882,7 @@
 		} else {
 			return;
 		}
-	} else {
+	} else if (isPhysicsLayer) {
 		if([elementName isEqualToString:@"path"]) {
 			body = [self parsePath:attributeDict];
 			
