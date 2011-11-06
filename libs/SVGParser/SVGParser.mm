@@ -44,7 +44,6 @@
 -(b2Body*) parseEllipseWithCenter:(CGPoint)center raidus:(CGPoint)radius;
 -(b2Body*) parseRect:(NSDictionary*) dict;
 -(b2Body*) parsePath:(NSDictionary*) dict;
--(CCSprite *) parseImage:(NSDictionary*) attributeDict;
 -(void) parseAttribs:(NSDictionary*) dict;
 
 // transform parser
@@ -76,12 +75,12 @@
 
 @synthesize gameAttribs=gameAttribs_, physicsAttribs=physicsAttribs_, transformAttribs=transformAttribs_;
 
-+(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)t physicsSelector:(SEL)s1 imageSelector:(SEL)s2
++(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)t selector:(SEL)s
 {
-	return [[[self alloc] initWithSVGFilename:filename b2World:world settings:settings target:t physicsSelector:s1 imageSelector:s2] autorelease];
+	return [[[self alloc] initWithSVGFilename:filename b2World:world settings:settings target:t selector:s] autorelease];
 }
 
--(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)sett target:(id)t physicsSelector:(SEL)s1 imageSelector:(SEL)s2
+-(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)sett target:(id)t selector:(SEL)s
 {
 	if( (self=[super init]) ) {
 		
@@ -89,17 +88,11 @@
 		settings = *sett;
 		
 		// callback used when the SVG entity has the "game_data" property
-		NSMethodSignature *sig = [[t class] instanceMethodSignatureForSelector:s1];
-		physicsCallbackInvocation = [NSInvocation invocationWithMethodSignature:sig];
-		[physicsCallbackInvocation setTarget:t];
-		[physicsCallbackInvocation setSelector:s1];
-		[physicsCallbackInvocation retain];
-		
-		sig = [[t class] instanceMethodSignatureForSelector:s2];
-		imageCallbackInvocation = [NSInvocation invocationWithMethodSignature:sig];
-		[imageCallbackInvocation setTarget:t];
-		[imageCallbackInvocation setSelector:s2];
-		[imageCallbackInvocation retain];
+		NSMethodSignature * sig = [[t class] instanceMethodSignatureForSelector:s];
+		callbackInvocation = [NSInvocation invocationWithMethodSignature:sig];
+		[callbackInvocation setTarget:t];
+		[callbackInvocation setSelector:s];
+		[callbackInvocation retain];
 		
 		// box2d world
 		box2Dworld = world;
@@ -144,8 +137,7 @@
 	[physicsAttribs_ release];
 	[transformAttribs_ release];
 	
-	[physicsCallbackInvocation release];
-	[imageCallbackInvocation release];
+	[callbackInvocation release];
 	[super dealloc];
 }
 
@@ -721,60 +713,6 @@
 	return mutablePath;
 }
 
-#pragma mark SVGParser - Image Parser
-
-- (CCSprite *) parseImage:(NSDictionary*) attributeDict {	
-	float x;
-	float y;
-	float angle;
-	
-	// The image filename (which will be the sprite frame name)
-	NSString *imageName = [attributeDict valueForKey:@"xlink:href"];
-	// create sprite from image
-	// we use a sprite frame since we might be using the same image
-	CCSpriteFrame *spriteFrame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:imageName];
-	// this might not be the best idea...
-	if (!spriteFrame) {
-		CCTexture2D *tex = [[CCTextureCache sharedTextureCache] addImage:imageName];
-		spriteFrame = [[CCSpriteFrame alloc] initWithTexture:tex rect:CGRectMake(0, 0, tex.contentSize.width, tex.contentSize.height)];
-		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFrame:spriteFrame name:imageName];
-	}
-	
-	CCSprite *sprite = [CCSprite spriteWithSpriteFrame:spriteFrame];
-	
-	float height = [[attributeDict valueForKey:@"height"] floatValue];
-	float width  = [[attributeDict valueForKey:@"width"] floatValue];
-	
-	if(self.transformAttribs != nil) {
-		
-		CGAffineTransform matrix = [self parseTransformAttribs];
-		matrix = CGAffineTransformConcat( matrix, transformMatrix[transformMatrixIdx]);
-		
-		x = [[attributeDict valueForKey:@"x"] floatValue];
-		y = [[attributeDict valueForKey:@"y"] floatValue];
-		
-		angle = -1 * (CC_RADIANS_TO_DEGREES(atan2f( matrix.c, matrix.a )));
-		CGPoint xformPoint = CGPointApplyAffineTransform( CGPointMake(x, y), matrix );
-		x = xformPoint.x;
-		y = xformPoint.y;
-	} else {
-		x = [[attributeDict valueForKey:@"x"] floatValue];
-		y = [[attributeDict valueForKey:@"y"] floatValue];
-		angle = 0;
-	}
-	x += (width * 0.5f);
-	y += (height * 0.5f);
-	y = (SVGSize.height - y);
-		
-	[sprite setRotation:angle];
-	[sprite setScaleX:width/(sprite.contentSize.width)];
-	[sprite setScaleY:height/(sprite.contentSize.height)];
-	[sprite setPosition:CGPointMake(x, y)];
-	
-	return sprite;	
-}
-
-
 #pragma mark SVGParser - Game configuration parser
 
 -(void) parseGameConfigurationAttributes:(NSString*)str
@@ -840,8 +778,6 @@
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {	
 	b2Body *body = NULL;
-	CCSprite *sprite = nil;
-	
 	if([elementName isEqualToString:@"svg"]) {
 		float width = [[attributeDict valueForKey:@"width"] floatValue];
 		float height = [[attributeDict valueForKey:@"height"] floatValue];
@@ -866,58 +802,44 @@
 				isPhysicsLayer = YES;
 			else
 				isPhysicsLayer = NO;
-			
-			if( [label hasPrefix:@"sprites:"] )
-				isSpritesLayer = YES;
-			else
-				isSpritesLayer = NO;
 		}
 	}
 	
 	// only parse the layer if the name begins with "physics:"
-	// skip non physics layers - unless we're on a image
-	if( isSpritesLayer ) {
-		if ([elementName isEqualToString:@"image"]) {
-			sprite = [self parseImage:attributeDict];
-		} else {
-			return;
-		}
-	} else if (isPhysicsLayer) {
-		if([elementName isEqualToString:@"path"]) {
-			body = [self parsePath:attributeDict];
+	// skip non physics layers
+	if( ! isPhysicsLayer )
+		return;
 			
-		} else if([elementName isEqualToString:@"rect"]) {
-			body = [self parseRect:attributeDict];
-			
-		} else if([elementName isEqualToString:@"circle"]) {
-			SVGLOG(@"SVGParser: circle not supported yet");
-			
-		} else if([elementName isEqualToString:@"ellipse"]) {
-			SVGLOG(@"SVGParser: ellipse not supported yet");
-			
-		} else if([elementName isEqualToString:@"line"]) {
-			SVGLOG(@"SVGParser: line not supported yet");
-			
-		} else if([elementName isEqualToString:@"polyline"]) {
-			SVGLOG(@"SVGParser: polyline not supported yet");
-			
-		} else if([elementName isEqualToString:@"polygon"]) {
-			SVGLOG(@"SVGParser: polygon not supported yet");
-		} else {
-			;
-		}
+	if([elementName isEqualToString:@"path"]) {
+		body = [self parsePath:attributeDict];
+
+	} else if([elementName isEqualToString:@"rect"]) {
+		body = [self parseRect:attributeDict];
+		
+	} else if([elementName isEqualToString:@"circle"]) {
+		SVGLOG(@"SVGParser: circle not supported yet");
+		
+	} else if([elementName isEqualToString:@"ellipse"]) {
+		SVGLOG(@"SVGParser: ellipse not supported yet");
+		
+	} else if([elementName isEqualToString:@"line"]) {
+		SVGLOG(@"SVGParser: line not supported yet");
+		
+	} else if([elementName isEqualToString:@"polyline"]) {
+		SVGLOG(@"SVGParser: polyline not supported yet");
+		
+	} else if([elementName isEqualToString:@"polygon"]) {
+		SVGLOG(@"SVGParser: polygon not supported yet");
+
+	} else {
+		;
 	}
 	
 	if( body && gameAttribs_) {		
-		[physicsCallbackInvocation setArgument:&body atIndex:2];
-		[physicsCallbackInvocation setArgument:&gameAttribs_ atIndex:3];
-		[physicsCallbackInvocation invoke];
-	}
-	if (sprite) {
-		[imageCallbackInvocation setArgument:&sprite atIndex:2];
-		[imageCallbackInvocation setArgument:&gameAttribs_ atIndex:3];
-		[imageCallbackInvocation invoke];
-	}
+			[callbackInvocation setArgument:&body atIndex:2];
+			[callbackInvocation setArgument:&gameAttribs_ atIndex:3];
+			[callbackInvocation invoke];
+		}
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName

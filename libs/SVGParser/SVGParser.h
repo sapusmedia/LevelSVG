@@ -63,15 +63,12 @@ struct SVGParserSettings
 	
 	// is the current SVG layer a "physics" layer
 	BOOL		isPhysicsLayer;
-	// is the current SVG layer an "sprites" layer
-	BOOL		isSpritesLayer;
 	
 	// Physics settings
 	SVGParserSettings	settings;
 
 	// callback
-	NSInvocation	*physicsCallbackInvocation;
-	NSInvocation	*imageCallbackInvocation;
+	NSInvocation	*callbackInvocation;
 	
 	// attribs
 	NSString		*transformAttribs_;
@@ -91,9 +88,9 @@ struct SVGParserSettings
 
 // creates the parser with a filename, world, settings, and a callback
 // important: the target is not retained
-+(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target physicsSelector:(SEL)s1 imageSelector:(SEL)s2;
++(id) parserWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target selector:(SEL)sel;
 
 // initializes the parser with a filename, world, settings and a callback
 // important: the target is not retained
--(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target physicsSelector:(SEL)s1 imageSelector:(SEL)s2;
+-(id) initWithSVGFilename:(NSString*)filename b2World:(b2World*)world settings:(SVGParserSettings*)settings target:(id)target selector:(SEL)sel;
 @end
