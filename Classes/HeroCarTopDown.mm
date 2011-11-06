@@ -182,9 +182,11 @@ const float HORSEPOWERS = 10 * CAR_SCALE;
 	b2Vec2 localPoint = b2Vec2(0,0);
 	b2Vec2 velocity = targetBody->GetLinearVelocityFromLocalPoint(localPoint);
 	
-	b2Vec2 sidewaysAxis = targetBody->GetTransform().R.col2;
+//	b2Vec2 sidewaysAxis = targetBody->GetTransform().R.col2;
+
+	b2Rot rot = leftWheel_->GetTransform().q;
+	b2Vec2 sidewaysAxis = b2Vec2( -rot.s, rot.c );
 	sidewaysAxis *= b2Dot(velocity,sidewaysAxis);
-	
 	targetBody->SetLinearVelocity(sidewaysAxis);//targetBody.GetWorldPoint(localPoint));
 }
 
@@ -197,12 +199,15 @@ const float HORSEPOWERS = 10 * CAR_SCALE;
 	[self killOrthogonalVelocity:rightWheel_];
 	[self killOrthogonalVelocity:leftRearWheel_];
 	[self killOrthogonalVelocity:rightRearWheel_];
-	
-	
+
 	//Driving
-	b2Vec2 ldirection = leftWheel_->GetTransform().R.col2;
+	b2Rot lrot = leftWheel_->GetTransform().q;
+	b2Vec2 ldirection = b2Vec2( -lrot.s, lrot.c );
+//	b2Vec2 ldirection = leftWheel_->GetTransform().R.col2;
 	ldirection *= engineSpeed_;
-	b2Vec2 rdirection = rightWheel_->GetTransform().R.col2;
+	b2Rot rrot = rightWheel_->GetTransform().q;
+	b2Vec2 rdirection = b2Vec2( -rrot.s, rrot.c );
+//	b2Vec2 rdirection = rightWheel_->GetTransform().R.col2;
 	rdirection *= engineSpeed_;
 	
 	leftWheel_->ApplyForce(ldirection, leftWheel_->GetPosition());

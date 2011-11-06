@@ -120,7 +120,7 @@
 		settings.bezierSegments = kPhysicsDefaultBezierSegments;
 		
 		// create box2d objects from SVG file in world
-		[SVGParser parserWithSVGFilename:[self SVGFileName] b2World:world_ settings:&settings target:self physicsSelector:@selector(physicsCallbackWithBody:attribs:) imageSelector:@selector(imageCallbackWithSprite:attribs:)];	
+		[SVGParser parserWithSVGFilename:[self SVGFileName] b2World:world_ settings:&settings target:self selector:@selector(physicsCallbackWithBody:attribs:)];
 
 		// Box2d iterations default values
 		worldVelocityIterations_ = 6;
@@ -192,12 +192,12 @@
 	b2Vec2 gravity;
 	gravity.Set(0.0f, -10.0f);
 	
-	// Do we want to let bodies sleep?
-	// This will speed up the physics simulation
-	bool doSleep = true;
-	
 	// Construct a world object, which will hold and simulate the rigid bodies.
-	world_ = new b2World(gravity, doSleep);
+	world_ = new b2World(gravity);
+	
+	// Do we want to let bodies sleep?
+	// This will speed up the physics simulation	
+	world_->SetAllowSleeping(true);
 	
 	world_->SetContinuousPhysics(true);
 	

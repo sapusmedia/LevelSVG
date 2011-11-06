@@ -523,7 +523,7 @@
 
 	// physics: fixture 
 	b2FixtureDef fd;
-	b2PolygonShape pathShape;
+	b2EdgeShape pathShape;
 	fd.shape = &pathShape;
 	
 	
@@ -579,7 +579,7 @@
 				bezierVerts = calculate_bezier( bezierPoints, settings.bezierSegments);
 				for( int i=0;i<settings.bezierSegments;i++)
 				{
-					pathShape.SetAsEdge(currentPoint, bezierVerts[i]);
+					pathShape.Set(currentPoint, bezierVerts[i]);
 					[self applyPhysicsPropertiesInFixture:&fd inBody:body];
 					currentPoint = bezierVerts[i];
 				}
@@ -596,7 +596,7 @@
 				y = [self pathNextFloat];
 				vect = [self convertPoint:CGPointMake(x,y)];
 				
-				pathShape.SetAsEdge(currentPoint, vect);
+				pathShape.Set(currentPoint, vect);
 				[self applyPhysicsPropertiesInFixture:&fd inBody:body];
 				currentPoint = vect;
 				break;
@@ -604,7 +604,7 @@
 			// close path
 			case 'z':
 			case 'Z':
-				pathShape.SetAsEdge(currentPoint, startPath);
+				pathShape.Set(currentPoint, startPath);
 				[self applyPhysicsPropertiesInFixture:&fd inBody:body];
 				currentPoint = startPath;
 				break;

@@ -31,11 +31,11 @@
 		world_ = w;
 
 		uint32 flags = 0;
-		flags += b2DebugDraw::e_shapeBit;
-		flags += b2DebugDraw::e_jointBit;
-//		flags += b2DebugDraw::e_aabbBit;
-//		flags += b2DebugDraw::e_pairBit;
-//		flags += b2DebugDraw::e_centerOfMassBit;
+		flags += b2Draw::e_shapeBit;
+		flags += b2Draw::e_jointBit;
+//		flags += b2Draw::e_aabbBit;
+//		flags += b2Draw::e_pairBit;
+//		flags += b2Draw::e_centerOfMassBit;
 
 		debugDraw_ = new GLESDebugDraw( kPhysicsPTMRatio * CC_CONTENT_SCALE_FACTOR() );
 		debugDraw_->SetFlags(flags);
