@@ -101,9 +101,6 @@
 		// camera
 		cameraOffset_ = CGPointZero;
 
-		CGSize screenSize = [CCDirector sharedDirector].winSize;
-		CCLOG(@"Screen width %0.2f screen height %0.2f",screenSize.width,screenSize.height);
-		
 		// init box2d physics
 		[self initPhysics];
 		

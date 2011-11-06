@@ -390,9 +390,9 @@
 	contact->GetWorldManifold(&worldManifold);
 	
 	b2Body *bodyA = fixtureA->GetBody();
-	b2Body *bodyB = fixtureB->GetBody();
 	
-	NSAssert( bodyA != bodyB, @"Hero: Box2d bug");
+	
+	NSAssert( bodyA != fixtureB->GetBody(), @"Hero: Box2d bug");
 	
 	// Box2d doesn't guarantees the order of the fixtures
 	otherIsA = (bodyA == body_) ? NO : YES;
