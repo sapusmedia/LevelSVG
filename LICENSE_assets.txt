@@ -1,0 +1,38 @@
+
+Lost garden License
+-------------------
+
+The following images are licensed under Creative Commons Attribution 3.0 license:
+   http://lunar.lostgarden.com/labels/License.html
+
+
+Files:
+    * Heart.png
+    * Star.png
+
+
+Fonts
+-----
+ - Images that are in the "fonts" subdirectory were downloaded from here:
+ http://www.fontalicious.com/super/gas.html
+ 
+
+
+Rest of assets
+--------------
+ - Icon*.png / Default*.png
+ - Files that are in the "levels" subdirectory
+ - Images that are in the "sprite" subdirectory (with the exception of Heart.png and Star.png, see above )
+ - Images that are in the "buttons" subdirectory
+ - Sounds that are in the "sounds" subdirectory
+ - Images that are in the "backgrounds" subdirectory
+
+Copyright Zynga, Inc.
+
+LICENSE: Creative Commons http://creativecommons.org/licenses/by-nc-sa/3.0/
+	* Give credit to the artist
+	* Don't use them for commercial purposes
+	* Distribute all derivative works under the same license
+
+
+

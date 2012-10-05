@@ -1,3 +1,9 @@
+2012-10-05 (3.4)
+- [NEW] Changed LevelSVG license to MIT (open source)
+- [FIX] Added iPhone 5 resources
+- [FIX] Added missing license files
+- [3RD] Removed FontLabel
+
 2011-11-06 (3.3)
 - [3RD] Updated to cocos2d v1.1-beta
 - [3RD] Updated to Box2d v2.2
