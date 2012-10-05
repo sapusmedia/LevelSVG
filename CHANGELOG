@@ -3,6 +3,7 @@
 - [FIX] Added iPhone 5 resources
 - [FIX] Added missing license files
 - [3RD] Removed FontLabel
+- [3RD] Box2d: Updated to v2.2.1
 
 2011-11-06 (3.3)
 - [3RD] Updated to cocos2d v1.1-beta
