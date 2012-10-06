@@ -150,7 +150,7 @@
 	// Joystick: 10
 	// GameNode (dragging objects): 50
 	// HUD (dragging screen): 100
-	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:10 swallowsTouches:YES];
+	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:10 swallowsTouches:YES];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event

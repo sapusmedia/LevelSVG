@@ -52,11 +52,11 @@
 		[self addChild:background z:-10];
 		
 
-		CCMenuItemFont * item0 = [CCMenuItemFont itemFromString:@"Play" target:self selector:@selector(play:)];
+		CCMenuItemFont * item0 = [CCMenuItemFont itemWithString:@"Play" target:self selector:@selector(play:)];
 		item0.color = ccBLACK;
-		CCMenuItemFont * item1 = [CCMenuItemFont itemFromString:@"Settings" target:self selector:@selector(settings:)];
+		CCMenuItemFont * item1 = [CCMenuItemFont itemWithString:@"Settings" target:self selector:@selector(settings:)];
 		item1.color = ccBLACK;
-		CCMenuItemFont * item2 = [CCMenuItemFont itemFromString:@"About" target:self selector:@selector(about:)];
+		CCMenuItemFont * item2 = [CCMenuItemFont itemWithString:@"About" target:self selector:@selector(about:)];
 		item2.color = ccBLACK;
 
 

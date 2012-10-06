@@ -60,6 +60,6 @@
 
 -(void) wait1second:(ccTime)dt
 {
-	[[CCDirector sharedDirector] replaceScene: [CCTransitionRadialCW transitionWithDuration:1.0f scene:[MenuScene scene]]];
+	[[CCDirector sharedDirector] replaceScene: [CCTransitionProgressRadialCW transitionWithDuration:1.0f scene:[MenuScene scene]]];
 }
 @end

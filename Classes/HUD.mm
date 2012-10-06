@@ -174,8 +174,8 @@
 	id repeat_4ever = [CCRepeatForever actionWithAction:big_seq];
 	[label runAction:repeat_4ever];
 	
-	CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Play Again" target:self selector:@selector(playAgain:)];
-	CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Main Menu" target:self selector:@selector(mainMenu:)];
+	CCMenuItem *item1 = [CCMenuItemFont itemWithString:@"Play Again" target:self selector:@selector(playAgain:)];
+	CCMenuItem *item2 = [CCMenuItemFont itemWithString:@"Main Menu" target:self selector:@selector(mainMenu:)];
 	CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(s.width/2, s.height/3)];
@@ -213,7 +213,7 @@
 	// Joystick: 10
 	// GameNode (dragging objects): 50
 	// HUD (dragging screen): 100
-	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
+	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:100 swallowsTouches:YES];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
