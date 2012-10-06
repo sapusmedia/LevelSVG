@@ -104,6 +104,7 @@
 	
 	// make the View Controller a child of the main window
 	[window_ addSubview:viewController_.view];
+	[window_ setRootViewController:viewController_];
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];	
