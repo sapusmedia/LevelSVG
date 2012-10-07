@@ -59,17 +59,17 @@
 		[self addChild:background z:-10];
 		
 		
-		CCMenuItem * item0 = [CCMenuItemFont itemFromString:@"Level 0" target:self selector:@selector(level0:)];
-		CCMenuItem * item1 = [CCMenuItemFont itemFromString:@"Level 1" target:self selector:@selector(level1:)];
-		CCMenuItem * item2 = [CCMenuItemFont itemFromString:@"Level 2" target:self selector:@selector(level2:)];
-		CCMenuItem * item3 = [CCMenuItemFont itemFromString:@"Level 3" target:self selector:@selector(level3:)];
-		CCMenuItem * item4 = [CCMenuItemFont itemFromString:@"Level 4" target:self selector:@selector(level4:)];
-		CCMenuItem * item5 = [CCMenuItemFont itemFromString:@"Level 5" target:self selector:@selector(level5:)];
-		CCMenuItem * item6 = [CCMenuItemFont itemFromString:@"Level 6" target:self selector:@selector(level6:)];
-		CCMenuItem * item7 = [CCMenuItemFont itemFromString:@"Level 7" target:self selector:@selector(level7:)];
+		CCMenuItem * item0 = [CCMenuItemFont itemWithString:@"Level 0" target:self selector:@selector(level0:)];
+		CCMenuItem * item1 = [CCMenuItemFont itemWithString:@"Level 1" target:self selector:@selector(level1:)];
+		CCMenuItem * item2 = [CCMenuItemFont itemWithString:@"Level 2" target:self selector:@selector(level2:)];
+		CCMenuItem * item3 = [CCMenuItemFont itemWithString:@"Level 3" target:self selector:@selector(level3:)];
+		CCMenuItem * item4 = [CCMenuItemFont itemWithString:@"Level 4" target:self selector:@selector(level4:)];
+		CCMenuItem * item5 = [CCMenuItemFont itemWithString:@"Level 5" target:self selector:@selector(level5:)];
+		CCMenuItem * item6 = [CCMenuItemFont itemWithString:@"Level 6" target:self selector:@selector(level6:)];
+		CCMenuItem * item7 = [CCMenuItemFont itemWithString:@"Level 7" target:self selector:@selector(level7:)];
 
-		CCMenuItem * item8 = [CCMenuItemFont itemFromString:@"Playground 0" target:self selector:@selector(playground0:)];
-		CCMenuItem * item9 = [CCMenuItemFont itemFromString:@"Playground 1" target:self selector:@selector(playground1:)];
+		CCMenuItem * item8 = [CCMenuItemFont itemWithString:@"Playground 0" target:self selector:@selector(playground0:)];
+		CCMenuItem * item9 = [CCMenuItemFont itemWithString:@"Playground 1" target:self selector:@selector(playground1:)];
 		
 		CCMenu *menu = [CCMenu menuWithItems: item0, item1, item2, item3, item4, item5, item6, item7, item8, item9, nil];
 		

@@ -41,7 +41,6 @@
 @implementation AppDelegate
 
 @synthesize window=window_;
-@synthesize viewController=viewController_;
 
 - (void) removeStartupFlicker
 {
@@ -64,61 +63,45 @@
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
-	// Init the window
+	// Main Window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-		
-	// before creating any layer, set the landscape mode
-	CCDirector *director = [CCDirector sharedDirector];
+	// Director
+	director_ = (CCDirectorIOS*)[CCDirector sharedDirector];
+	[director_ setDisplayStats:NO];
+	[director_ setAnimationInterval:1.0/60];
 	
-	// Init the view controller
-	viewController_ = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-	viewController_.wantsFullScreenLayout = YES;
+	// GL View
+	CCGLView *__glView = [CCGLView viewWithFrame:[window_ bounds]
+									 pixelFormat:kEAGLColorFormatRGB565
+									 depthFormat:0 /* GL_DEPTH_COMPONENT24_OES */
+							  preserveBackbuffer:NO
+									  sharegroup:nil
+								   multiSampling:NO
+								 numberOfSamples:0
+						  ];
 	
-	//
-	// Create the EAGLView manually
-	//  1. Create a RGB565 format. Alternative: RGBA8
-	//	2. depth format of 0 bit. Use 16 or 24 bit for 3d effects, like CCPageTurnTransition
-	//
-	//
-	EAGLView *glView = [EAGLView viewWithFrame:[window_ bounds]
-								   pixelFormat:kEAGLColorFormatRGB565
-								   depthFormat:0	// GL_DEPTH_COMPONENT24_OES
-						];
-	// Enable multiple touches
-	[glView setMultipleTouchEnabled:YES];
+	[director_ setView:__glView];
+	[director_ setDelegate:self];
+	director_.wantsFullScreenLayout = YES;
 	
-	// attach the openglView to the director
-	[director setOpenGLView:glView];
+	// Retina Display ?
+	[director_ enableRetinaDisplay:YES];
 	
-	// To use High-Res un comment the following line
-	if (![director enableRetinaDisplay:YES]) {
-		CCLOG(@"Retina Display Not supported");
-	}
+	// Navigation Controller
+	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
+	navController_.navigationBarHidden = YES;
 	
-	[director setAnimationInterval:1.0f/60.0f];
-	// Display FPS ?
-	//	[director setDisplayFPS:YES];
-
-	// make the OpenGLView a child of the view controller
-	[viewController_ setView:glView];
+	// AddSubView doesn't work on iOS6
+	[window_ addSubview:navController_.view];
+	[window_ setRootViewController:navController_];
 	
-	// make the View Controller a child of the main window
-	[window_ addSubview:viewController_.view];
-	
-	// make main window visible
-	[window_ makeKeyAndVisible];	
-	
-	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
-	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
-	// You can change anytime.
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];	
-
-
+	[window_ makeKeyAndVisible];
 	// Init sounds
 	[self initSounds];
 	
 	// Run
-	[[CCDirector sharedDirector] runWithScene: [IntroScene scene]];
+	[director_ pushScene: [IntroScene scene]];
+	[director_ startAnimation];
 }
 
 - (void)initSounds
@@ -130,11 +113,11 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-	[[CCDirector sharedDirector] pause];
+	[[CCDirector sharedDirector] stopAnimation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	[[CCDirector sharedDirector] resume];
+	[[CCDirector sharedDirector] startAnimation];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
@@ -159,17 +142,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {	
-	// TIP:
-	// Save the game state here
 	CCDirector *director = [CCDirector sharedDirector];
-	
-	[[director openGLView] removeFromSuperview];
-	
-	[viewController_ release];
-	
-	[window_ release];
-	
-	[director end];	
+	[director.view removeFromSuperview];
+	[director end];
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
@@ -179,7 +154,6 @@
 - (void)dealloc {
 	[[CCDirector sharedDirector] end];
 	[window_ release];
-	[viewController_ release];
 	[super dealloc];
 }
 

@@ -87,9 +87,9 @@
 		CCSpriteFrame *frame2 = [cache spriteFrameByName:@"sapus_girl_02.png"];
 		CCSpriteFrame *frame3 = [cache spriteFrameByName:@"sapus_girl_03.png"];
 		NSArray *frames = [NSArray arrayWithObjects:frame1, frame2, frame3, nil];
-		CCAnimation *animation = [CCAnimation animationWithFrames:frames];
+		CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames];
 		
-		CCAnimate *animate = [CCAnimate actionWithDuration:1 animation:animation restoreOriginalFrame:NO];
+		CCAnimate *animate = [CCAnimate actionWithAnimation:animation];
 		[self runAction:[CCRepeatForever actionWithAction:animate]];
 	}
 	return self;

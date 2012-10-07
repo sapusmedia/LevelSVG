@@ -48,18 +48,18 @@
 		[CCMenuItemFont setFontName: @"Marker Felt"];
 		[CCMenuItemFont setFontSize:34];
 		CCMenuItemToggle *item1 = [CCMenuItemToggle itemWithTarget:self selector:@selector(controlCallback:) items:
-								 [CCMenuItemFont itemFromString: @"Control: Tilt"],
-								 [CCMenuItemFont itemFromString: @"Control: D-Pad"],
+								 [CCMenuItemFont itemWithString:@"Control: Tilt"],
+								 [CCMenuItemFont itemWithString:@"Control: D-Pad"],
 								 nil];
 
 		CCMenuItemToggle *item2 = [CCMenuItemToggle itemWithTarget:self selector:@selector(controlFPS:) items:
-								   [CCMenuItemFont itemFromString: @"Show FPS: OFF"],
-								   [CCMenuItemFont itemFromString: @"Show FPS: ON"],
+								   [CCMenuItemFont itemWithString:@"Show FPS: OFF"],
+								   [CCMenuItemFont itemWithString:@"Show FPS: ON"],
 								   nil];
 
 		CCMenuItemToggle *item3 = [CCMenuItemToggle itemWithTarget:self selector:@selector(controlWireframe:) items:
-								   [CCMenuItemFont itemFromString: @"Wireframe: OFF"],
-								   [CCMenuItemFont itemFromString: @"Wireframe: ON"],
+								   [CCMenuItemFont itemWithString:@"Wireframe: OFF"],
+								   [CCMenuItemFont itemWithString:@"Wireframe: ON"],
 								   nil];
 
 		
@@ -101,9 +101,9 @@
 {
 	CCMenuItemToggle *item = (CCMenuItemToggle*) sender;	
 	if( item.selectedIndex == 0 )
-		[[CCDirector sharedDirector] setDisplayFPS:NO];
+		[[CCDirector sharedDirector] setDisplayStats:NO];
 	else
-		[[CCDirector sharedDirector] setDisplayFPS:YES];
+		[[CCDirector sharedDirector] setDisplayStats:YES];
 }
 
 -(void) controlWireframe:(id)sender
