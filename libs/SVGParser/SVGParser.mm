@@ -122,7 +122,7 @@
 		if([filename hasPrefix:@"http://"])
 			url=[NSURL URLWithString:filename];
 		else
-			url = [NSURL fileURLWithPath:[CCFileUtils fullPathFromRelativePath:filename]];
+			url = [NSURL fileURLWithPath:[[CCFileUtils sharedFileUtils] fullPathFromRelativePath:filename]];
 		
 		NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
 		

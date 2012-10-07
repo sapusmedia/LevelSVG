@@ -65,17 +65,17 @@ kmMat4* const kmMat4Identity(kmMat4* pOut)
 }
 
 
-float get(const kmMat4 * pIn, int row, int col)
+static float get(const kmMat4 * pIn, int row, int col)
 {
 	return pIn->mat[row + 4*col];
 }
 
-void set(kmMat4 * pIn, int row, int col, float value)
+static void set(kmMat4 * pIn, int row, int col, float value)
 {
 	pIn->mat[row + 4*col] = value;
 }
 
-void swap(kmMat4 * pIn, int r1, int c1, int r2, int c2)
+static void swap(kmMat4 * pIn, int r1, int c1, int r2, int c2)
 {
 	float tmp = get(pIn,r1,c1);
 	set(pIn,r1,c1,get(pIn,r2,c2));
@@ -83,7 +83,7 @@ void swap(kmMat4 * pIn, int r1, int c1, int r2, int c2)
 }
 
 //Returns an upper and a lower triangular matrix which are L and R in the Gauss algorithm
-int gaussj(kmMat4 *a, kmMat4 *b)
+static int gaussj(kmMat4 *a, kmMat4 *b)
 {
     int i, icol = 0, irow = 0, j, k, l, ll, n = 4, m = 4;
     float big, dum, pivinv;

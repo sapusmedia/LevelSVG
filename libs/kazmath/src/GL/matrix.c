@@ -37,7 +37,7 @@ km_mat4_stack* current_stack = NULL;
 
 static unsigned char initialized = 0;
 
-void lazyInitialize()
+static void lazyInitialize()
 {
 
 	if (!initialized) {

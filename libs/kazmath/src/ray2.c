@@ -106,7 +106,7 @@ kmBool kmRay2IntersectLineSegment(const kmRay2* ray, const kmVec2* p1, const kmV
     return KM_TRUE;*/
 }
 
-void calculate_line_normal(kmVec2 p1, kmVec2 p2, kmVec2* normal_out) {
+static void calculate_line_normal(kmVec2 p1, kmVec2 p2, kmVec2* normal_out) {
     kmVec2 tmp;
     kmVec2Subtract(&tmp, &p2, &p1); //Get direction vector
 
