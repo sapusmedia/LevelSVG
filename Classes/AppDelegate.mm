@@ -92,7 +92,7 @@
 	navController_.navigationBarHidden = YES;
 	
 	// AddSubView doesn't work on iOS6
-	[window_ addSubview:navController_.view];
+//	[window_ addSubview:navController_.view];
 	[window_ setRootViewController:navController_];
 	
 	[window_ makeKeyAndVisible];
