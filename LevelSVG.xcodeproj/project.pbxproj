@@ -298,6 +298,8 @@
 		A06EA399161F59E600B025FE /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A06EA33E161F59E600B025FE /* b2Rope.cpp */; };
 		A06EA39A161F59E600B025FE /* b2Rope.h in Headers */ = {isa = PBXBuildFile; fileRef = A06EA33F161F59E600B025FE /* b2Rope.h */; };
 		A06EA39C161F5A7000B025FE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A06EA39B161F5A7000B025FE /* Default-568h@2x.png */; };
+		AA6F842616257D21000A6C33 /* DDData.h in Headers */ = {isa = PBXBuildFile; fileRef = AA6F842416257D21000A6C33 /* DDData.h */; };
+		AA6F842716257D21000A6C33 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6F842516257D21000A6C33 /* DDData.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -838,6 +840,8 @@
 		A06EA33E161F59E600B025FE /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Rope.cpp; sourceTree = "<group>"; };
 		A06EA33F161F59E600B025FE /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Rope.h; sourceTree = "<group>"; };
 		A06EA39B161F5A7000B025FE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AA6F842416257D21000A6C33 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
+		AA6F842516257D21000A6C33 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1104,6 +1108,7 @@
 		508854EB10F643BE00581990 /* SVGParser */ = {
 			isa = PBXGroup;
 			children = (
+				AA6F842316257D21000A6C33 /* DDData */,
 				508854EC10F643BE00581990 /* BezierCurves.h */,
 				508854ED10F643BE00581990 /* SVGParser.h */,
 				508854EE10F643BE00581990 /* SVGParser.mm */,
@@ -1807,6 +1812,15 @@
 			path = Rope;
 			sourceTree = "<group>";
 		};
+		AA6F842316257D21000A6C33 /* DDData */ = {
+			isa = PBXGroup;
+			children = (
+				AA6F842416257D21000A6C33 /* DDData.h */,
+				AA6F842516257D21000A6C33 /* DDData.m */,
+			);
+			path = DDData;
+			sourceTree = "<group>";
+		};
 		E0517DC01340D40C00A01143 /* CocosDenshion */ = {
 			isa = PBXGroup;
 			children = (
@@ -1903,6 +1917,7 @@
 			files = (
 				508854EF10F643BE00581990 /* BezierCurves.h in Headers */,
 				508854F010F643BE00581990 /* SVGParser.h in Headers */,
+				AA6F842616257D21000A6C33 /* DDData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2298,6 +2313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				508854F110F643BE00581990 /* SVGParser.mm in Sources */,
+				AA6F842716257D21000A6C33 /* DDData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
