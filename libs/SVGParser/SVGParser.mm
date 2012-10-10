@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2009-2011 Ricardo Quesada
  * Copyright (c) 2011-2012 Zynga Inc.
+ * SVGZ Support - Copyright (c) 2012 Yann Fripp - Play Fripp
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,6 +52,7 @@
 #import "SVGParser.h"
 #import "BezierCurves.h"
 #import "GameConfiguration.h"
+#import "DDData.h"
 
 @interface SVGParser (Private)
 
@@ -118,13 +120,30 @@
 		
 		isPhysicsLayer = NO;
 
+		BOOL needURL = YES;
 		NSURL *url;
+		NSData *data;
+		
 		if([filename hasPrefix:@"http://"])
 			url=[NSURL URLWithString:filename];
 		else
+		{
 			url = [NSURL fileURLWithPath:[[CCFileUtils sharedFileUtils] fullPathFromRelativePath:filename]];
+			
+			if ([filename hasSuffix:@"gz"])
+			{
+				SVGLOG(@"SVGParser: Parse GZipped file.");
+				data = [[NSData dataWithContentsOfURL:url] gzipInflate];
+				needURL = NO;
+			}
+		}
 		
-		NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+		NSXMLParser *parser;
+		
+		if (needURL)
+			parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+		else
+			parser = [[NSXMLParser alloc] initWithData:data];
 		
 		// we'll do the parsing
 		[parser setDelegate:self];
