@@ -80,6 +80,7 @@
 								 numberOfSamples:0
 						  ];
 	
+	__glView.multipleTouchEnabled = YES;
 	[director_ setView:__glView];
 	[director_ setDelegate:self];
 	director_.wantsFullScreenLayout = YES;
